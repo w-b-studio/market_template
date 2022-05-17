@@ -19,4 +19,5 @@ export default {
     margin: 0
     font-size: 2vh
     overflow-x: hidden
+    position: relative
 </style>
