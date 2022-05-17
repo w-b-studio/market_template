@@ -4,8 +4,6 @@
       <ProductItem />
       <ProductItem />
       <ProductItem />
-      <ProductItem />
-      <ProductItem />
     </div>
   </div>
 </template>
@@ -13,7 +11,7 @@
 <script>
 import ProductItem from '../components/ProductItem.vue'
 export default {
-  name:'HomeView',
+  name:'CategoryView',
   data() {
     return {
       
