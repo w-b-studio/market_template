@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header id="header"/>
     <router-view />
   </div>
 </template>
@@ -10,6 +10,11 @@ import Header from './components/Header.vue'
 export default {
     components:{
       Header
+  },
+  mounted() {
+    if(this.$route.path === '/admin'){
+      document.getElementById("header").style.visibility = "hidden"
+    }
   },
 }
 </script>

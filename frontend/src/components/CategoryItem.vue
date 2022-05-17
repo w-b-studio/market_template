@@ -10,5 +10,5 @@
       text-decoration: none
       color: black
     a:hover
-      color: #c11e26
+      color: #eb4034
 </style>

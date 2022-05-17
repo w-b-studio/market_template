@@ -56,7 +56,7 @@ export default {
         button
           font-size: 1em
           float: right
-          background-color: #de2e36
+          background-color: #eb4034
           border-radius: 10px
           padding-top: 0.8vh
           padding-bottom: 0.8vh

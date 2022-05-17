@@ -85,7 +85,7 @@ export default {
           top: 60%
           left: -12%
           font-size: 0.7em
-          background-color: red
+          background-color: #eb4034
           border-radius: 50%
           padding: 0.5vh
           z-index: 100
@@ -104,7 +104,7 @@ export default {
         a:active
           color: black
         a:hover
-          color: #c11e26
+          color: #eb4034
     .categories_wrapper
       width: 100vw
       height: 6vh

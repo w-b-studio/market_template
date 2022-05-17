@@ -77,7 +77,7 @@ export default {
 					width: 8vw
 					border-radius: 10px
 					font-size: 1.5vh
-					background-color: #c11e26
+					background-color: #eb4034
 					cursor: pointer
 			h1
 				margin-left: 4vw
