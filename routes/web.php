@@ -14,5 +14,5 @@ Route::get('image/create/{product}', [ImageController::class, 'create'])
     ->name('image.create');
 Route::post('image/store', [ImageController::class, 'store'])
     ->name('image.store');
-Route::post('image/destroy', [ImageController::class, 'destroy'])
+Route::delete('image/destroy/{image}', [ImageController::class, 'destroy'])
     ->name('image.destroy');
