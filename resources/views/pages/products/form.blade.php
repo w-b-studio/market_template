@@ -12,16 +12,12 @@ $product = $product ?? null;
     <input type="text" name="name" placeholder="Name"/>
     <input type="number" name="price" placeholder="Price"/>
 
-    <select name="category_id">
-
-        <option value="all">All</option>
-
+    <input list="category_name" name="category_name">
+    <datalist id="category_name">
         @foreach($categories as $category)
-            <option value="{{ $category->id }}">
-                {{ $category->name }}
-            </option>
+            <option value="{{ $category->name }}"></option>
         @endforeach
-    </select>
+    </datalist>
 
     <button>create</button>
 </form>

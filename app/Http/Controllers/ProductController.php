@@ -30,7 +30,14 @@ class ProductController extends Controller
         $product = Product::query()
             ->create($data);
 
-        $product->category()->associate(request()->category_id);
+        $category = Category::query()
+            ->where('name', request()->category_name)
+            ->get();
+
+        if (!$category)
+            return redirect()->route('product.index', $product);
+
+        $product->category()->associate($category[0]->id);
         $product->save();
 
         return redirect()->route('product.index', $product);
