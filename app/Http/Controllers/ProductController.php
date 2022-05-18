@@ -2,22 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    function index() {
+        $products = Product::all();
+        return view('pages.products.index', [
+            'products' => $products
+        ]);
+    }
+
+    function create() {
+        $categories = Category::all();
+        return view('pages.products.form', [
+            'categories' => $categories
+        ]);
+    }
+
     function store() {
-        $data = request()->validated();
+        $data = request()->validate([
+            'name' => 'required',
+            'price' => 'required',
+        ]);
         $product = Product::query()
             ->create($data);
 
-        return redirect()->route('product.create', $product);
+        $product->category()->associate(request()->category_id);
+        $product->save();
+
+        return redirect()->route('product.index', $product);
     }
 
     function show(Product $product) {
-        return view('product.show', [
-            'products' => $product
+        return view('pages.products.show', [
+            'product' => $product
         ]);
     }
 
@@ -29,7 +50,10 @@ class ProductController extends Controller
     }
 
     function update(Product $product) {
-        $data = request()->validated();
+        $data = request()->validate([
+            'name' => 'required',
+            'price' => 'required',
+        ]);;
 
         $product->update($data);
         return redirect()->route('product.show', $product);
