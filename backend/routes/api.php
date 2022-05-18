@@ -19,13 +19,15 @@ use App\Http\Controllers\ImageController;
 |
 */
 
-Route::resource('/category', CategoryController::class);
+Route::get('/category',[ CategoryController::class, 'index']);
+Route::post('/category', [ CategoryController::class, 'store']);
+Route::delete('/category', [ CategoryController::class, 'destroy']);
+Route::get('/category/{id}', [CategoryController::class, 'getCategoryById']);
 Route::resource('/request', RequestController::class);
 Route::resource('/product', ProductController::class);
 
 Route::get('/image/get/{id}', [ImageController::class, 'getImage'])
     ->name('image.get');
-Route::post('/image/create/{id}', [ImageController::class, 'store'])
-    ->name('image.create');
+Route::post('/create_image/{id}', [ImageController::class, 'createImage']);
 Route::delete('/image/destroy/{image}', [ImageController::class, 'destroy'])
     ->name('image.destroy');

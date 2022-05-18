@@ -13,6 +13,11 @@ class CategoryController extends Controller
         return response()->json($category, 200);
     }
 
+    function getCategoryById($id) {
+        $category = Category::with('product')->where('id', $id)->first();
+        return response()->json($category, 200);
+    }
+
     function store() {
         $data = request()->validate(
             ['name' => 'required|max:255',]

@@ -18,24 +18,24 @@
     </div>
     <div class="categories_wrapper">
       <div class="categories">
-        <CategoryItem />
-        <CategoryItem />
-        <CategoryItem />
-        <CategoryItem />
-        <CategoryItem />
+        <CategoryItem 
+         v-for="item in categories" 
+          :key="item.id"
+          :ItemData = "item"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import $ from "jquery"
+import axios from 'axios'
 import CategoryItem from './CategoryItem.vue'
 import CartView from '../views/CartView.vue'
 export default {
   name: 'Header',
   data() {
     return {
+      categories: [],
       is_visible: false
     }
   },
@@ -47,6 +47,11 @@ export default {
     Modal(){
       document.getElementById("modal").style.visibility = "visible"
     }
+  },
+  mounted() {
+    axios
+        .get('http://localhost:8000/api/category')
+        .then(response => (this.categories = response.data));
   },
 }
 </script>

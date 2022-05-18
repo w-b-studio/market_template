@@ -16,15 +16,15 @@ class ImageController extends Controller
     {
         $image = Image::where('product_id',$id)->latest()->first();
 
-        return response($image,200);
+        return response()->json($image,200);
     }
 
-    function create(Request $request, $id) {
+    function createImage(Request $request, $id) {
         $validatedData = $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
     
         ]);
-        
+        dd("dsa");
         $file = $request->file('image');
         $fileName                   	= $file->getClientOriginalName();
         $fileFullName               	= time()."_".$fileName;
@@ -38,6 +38,7 @@ class ImageController extends Controller
             'product_id'=> $id,
             'path' => $fullpath
         ]);
+        dd($ApplicantImage);
         
         return response(["data"=>$ApplicantImage, "status"=> "Upload was succesfull"],200);
     }

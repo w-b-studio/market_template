@@ -1,14 +1,30 @@
 <template>
   <div class="item_wrapper">
-    <a href="">Футболки</a>
+     <router-link :to='{ path: `/category/${ this.ItemData.id }` }' class="link" @click="refresh">{{ItemData.name}}</router-link>
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    ItemData: {
+        type: Object,
+        default: () => {}
+    }
+  },
+  methods: {
+    refresh(){
+      window.location.reload();
+    }
+  },
+}
+</script>
+
 <style lang="sass" scoped>
   .item_wrapper
-    a
+    .link
       text-decoration: none
       color: black
-    a:hover
+    .link:hover
       color: #eb4034
 </style>

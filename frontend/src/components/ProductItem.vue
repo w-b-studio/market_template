@@ -1,10 +1,10 @@
 <template>
-  <div class="product_main_wrapper">
+  <div class="product_main_wrapper" v-show="is_visible">
     <div class="product_wrapper">
-      <div class="image"></div>
+      <img v-bind:src="'/company_logos/'+image+'.png'">
       <div class="right_wrapper">
-        <h1>Крутая футболка</h1>
-        <h2>Ценна: <span>10000</span> ₸</h2>
+        <h1>{{ItemData.name}}</h1>
+        <h2>Ценна: <span>{{ItemData.price}}</span> ₸</h2>
         <button>Добавить</button>
       </div>
     </div>
@@ -12,8 +12,41 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    
+    data() {
+      return {
+        is_visible: true,
+        image: null
+      }
+    },
+    props:{
+      ItemData: {
+        type: Object,
+        default: () => {}
+    },
+    is_category: {
+      type: Boolean,
+      default: false
+    }
+    },
+    mounted() {
+      if(this.is_category){
+        if(this.ItemData.category_id != this.$route.params.id){
+          this.is_visible = false
+        }
+      }
+      axios
+        .get('http://localhost:8000/api/image/get/'+this.ItemData.id)
+        .then(response => (this.image = response.data))
+        .catch(function (error) {
+          if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          }
+        });
+    },
 }
 </script>
 
@@ -31,13 +64,13 @@ export default {
       display: flex
       flex-direction: row
       background-color: #cacaca
-      .image
+      img
         border-radius: 10px
         margin-left: 1.8vw
         margin-top: 4.5vh
-        width: 35%
-        height: 70%
-        background: url('../assets/tshirt.png') no-repeat
+        width: 10vw
+        height: 27vh
+        background-color: gray
         background-size: 100% 100%
       .right_wrapper
         margin-left: 2vw
