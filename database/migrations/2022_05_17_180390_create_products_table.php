@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\Request;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,24 +11,26 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->foreignId(Category::class)
-                ->after('id')
+            $table->id();
+            $table->string('name');
+            $table->double('price');
+
+            $table->foreignIdFor(Category::class)
                 ->nullable()
                 ->constrained()
                 ->nullOnDelete();
 
-            $table->string('name');
-            $table->double('price');
+            $table->foreignIdFor(Request::class)
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
 
+            $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $key = (new Category())->getForeignKey();
-            $table->dropForeign([$key]);
-            $table->removeColumn($key);
-        });
+        Schema::dropIfExists('mangas');
     }
 };
