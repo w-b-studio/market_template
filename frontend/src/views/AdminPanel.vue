@@ -18,6 +18,7 @@
           <input type="text" placeholder="Название">
           <input type="text" placeholder="Ценна">
           <input type="text" placeholder="Название категории">
+          <input type="file" name="image" id="file_input">
           <button @click="CreateProduct">Создать</button>
         </form>
         <div id="admin_modal">
@@ -35,7 +36,8 @@ export default {
       password: null,
       admin_username: 'admin',
       admin_password: 'admin',
-      is_auth: false
+      is_auth: false,
+      file: null
     }
   },
   methods: {
@@ -49,8 +51,8 @@ export default {
     CreateCategory(){
 
     },
-    CreateProduct(){
-
+    CreateProduct(event){
+      this.files = document.getElementById('file_input').file[0];
     },
     Modal(){
       document.getElementById("admin_modal").style.visibility = "visible";
