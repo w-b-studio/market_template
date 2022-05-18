@@ -3,17 +3,18 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ImageController;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::resource('/category', CategoryController::class);
+Route::resource('/request', RequestController::class);
+Route::resource('/product', ProductController::class);
+
+Route::get('/image/create/{product}', [ImageController::class, 'create'])
+    ->name('image.create');
+Route::post('/image/store', [ImageController::class, 'store'])
+    ->name('image.store');
+Route::delete('/image/destroy/{image}', [ImageController::class, 'destroy'])
+    ->name('image.destroy');
