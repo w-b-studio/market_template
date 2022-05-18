@@ -12,7 +12,6 @@ return new class extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->id('id');
             $table->string('number');
-            // add array of product ids
         });
     }
 

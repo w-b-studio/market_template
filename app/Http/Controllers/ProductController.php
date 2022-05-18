@@ -15,7 +15,6 @@ class ProductController extends Controller
         return redirect()->route('product.create', $product);
     }
 
-
     function show(Product $product) {
         return view('product.show', [
             'products' => $product
@@ -35,6 +34,7 @@ class ProductController extends Controller
         $product->update($data);
         return redirect()->route('product.show', $product);
     }
+
     public function destroy(Product $product)
     {
         $product->delete();
