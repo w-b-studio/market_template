@@ -5,7 +5,7 @@
       <div class="right_wrapper">
         <h1>{{ItemData.name}}</h1>
         <h2>Ценна: <span>{{ItemData.price}}</span> ₸</h2>
-        <button>Добавить</button>
+        <button @click="addToCard">Добавить</button>
       </div>
     </div>
   </div>
@@ -29,6 +29,20 @@ export default {
       type: Boolean,
       default: false
     }
+    },
+    methods: {
+      addToCard(){
+         var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+        if(existingEntries == null) existingEntries = [];
+        var entry = {
+            "id": existingEntries.length + 1,
+            "name": this.ItemData.name,
+            "price": this.ItemData.price
+        };
+        localStorage.setItem("entry", JSON.stringify(entry));
+        existingEntries.push(entry);
+        localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+      }
     },
     mounted() {
       if(this.is_category){

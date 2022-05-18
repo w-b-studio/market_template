@@ -1,7 +1,7 @@
 <template>
   <div class="cart_item_wrapper">
-    Футболка <span>Ценна : 10000 ₸</span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bucket" viewBox="0 0 16 16">
+    {{ItemData.name}} <span>Ценна : {{ItemData.price}} ₸</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bucket" viewBox="0 0 16 16" @click="removeItem">
       <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z"/>
     </svg>
   </div>
@@ -9,7 +9,30 @@
 
 <script>
 export default {
-    
+    data() {
+      return {
+        
+      }
+    },
+    props:{
+      ItemData: {
+        type: Object,
+        default: () => {}
+    },
+    methods: {
+      removeItem(){
+        var all = JSON.parse(localStorage.getItem("allEntries"));
+        localStorage.removeItem("allEntries");
+        all.forEach((element) => {
+          if(element.id != this.ItemData.id){
+            localStorage.setItem("entry", JSON.stringify(entry));
+            existingEntries.push(element);
+            localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+          }
+        })
+      }
+    },
+    }
 }
 </script>
 

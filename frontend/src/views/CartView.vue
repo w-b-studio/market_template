@@ -4,13 +4,10 @@
 			<h1>Ваша корзина</h1>
 			<span class="close" @click="CloseModal">X</span>
 			<div class="c_item_wrapper">
-				<CartItem />
-				<CartItem />
-				<CartItem />
-				<CartItem />
-				<CartItem />
-				<CartItem />
-				<CartItem />
+				<CartItem 
+				v-for="item in cart_items" 
+				:key="item.id"
+				:ItemData = "item"/>
 			</div>
 			<form>
 				<legend>Введите ваш номер</legend>
@@ -25,6 +22,11 @@
 import CartItem from '../components/CartItem.vue'
 export default {
     name: 'Cart',
+	data() {
+		return {
+			cart_items: []
+		}
+	},
 		props:{
 			is_visible:{
 				type: Boolean,
@@ -37,6 +39,13 @@ export default {
 		methods: {
 			CloseModal(){
 				document.getElementById("modal").style.visibility = "hidden"
+			}
+		},
+		mounted() {
+			var all = JSON.parse(localStorage.getItem("allEntries"));
+			if(all != null){
+				this.cart_items = all;
+				console.log(all);
 			}
 		},
 }

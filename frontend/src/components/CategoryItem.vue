@@ -1,6 +1,6 @@
 <template>
   <div class="item_wrapper">
-     <router-link :to='{ path: `/category/${ this.ItemData.id }` }' class="link" @click="refresh">{{ItemData.name}}</router-link>
+     <router-link :to='{ path: `/category/${ this.ItemData.id }` }' class="link" >{{ItemData.name}}</router-link>
   </div>
 </template>
 
@@ -10,11 +10,6 @@ export default {
     ItemData: {
         type: Object,
         default: () => {}
-    }
-  },
-  methods: {
-    refresh(){
-      window.location.reload();
     }
   },
 }
