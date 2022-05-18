@@ -6,30 +6,40 @@ use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+use \Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class ImageController extends Controller
 {
-    function create(Product $product) {
-        return view('pages.image.form', [
-            'product' => $product
-        ]);
+    public function getImage($id)
+    {
+        $image = Image::where('product_id',$id)->latest()->first();
+
+        return response($image,200);
     }
 
-    function store(Request $request) {
-        if (!$request->hasFile('path'))
-            return redirect()->route('product.index');
-
-        $path = $request->file('path')
-            ->store('public/image');
-
-        $image = new Image();
-        $image->fill([
-            'path' => $path,
-            'product_id' => $request->product_id
+    function create(Request $request, $id) {
+        $validatedData = $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+    
         ]);
-        $image->save();
+        
+        $file = $request->file('image');
+        $fileName                   	= $file->getClientOriginalName();
+        $fileFullName               	= time()."_".$fileName;
+        $path                       	= $fileFullName;
+        $file->move(public_path('profile-pictures/'), $path);
+        $fullpath                   	= 'product-pictures/'.$path;
 
-        return redirect()->route('product.index');
+
+
+        $ApplicantImage = Image::create([
+            'product_id'=> $id,
+            'path' => $fullpath
+        ]);
+        
+        return response(["data"=>$ApplicantImage, "status"=> "Upload was succesfull"],200);
     }
 
     function destroy(Image $image) {

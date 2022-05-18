@@ -12,8 +12,5 @@ class Request extends Model
     protected $fillable = [
         'number',
     ];
-
-    public function products() {
-        return $this->hasMany(Product::class);
-    }
+    
 }

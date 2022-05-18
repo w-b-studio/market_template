@@ -3,27 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\RequestProduct;
+use App\Models\Request as RequestModel;
 
 class RequestController extends Controller
 {
     function index() {
-        return view('pages.requests.index');
+        $data = RequestProduct::with('product','request')->get();
     }
 
-    function create() {
-        return view('pages.requests.form');
-    }
-
-    function store()
+    function store(Request $request)
     {
-        $data = request()->validate(
-            ['number' => 'required',]
-        );
-        $request = \App\Models\Request::query()
-            ->create($data);
-        $request->save();
+        $data = $request->all();
 
-        return redirect()->route('request.index');
+        $data_req = RequestModel::create($data);
+        if(isset($data['products'])){
+            foreach ($data['products'] as $product){
+                $product['request_id'] = $data_req->id;
+                RequestProduct::create($product);
+            }
+        }
     }
 
     public function show(\App\Models\Request $request)

@@ -10,30 +10,22 @@ class ProductController extends Controller
 {
     function index() {
         $products = Product::all();
-        return view('pages.products.index', [
-            'products' => $products
-        ]);
-    }
-
-    function create() {
-        $categories = Category::all();
-        return view('pages.products.form', [
-            'categories' => $categories
-        ]);
+        return response()->json($products, 200);
     }
 
     function store() {
         $data = request()->validate([
             'name' => 'required',
             'price' => 'required',
+            'category' => 'string|required'
         ]);
-        $product = Product::query()
-            ->create($data);
 
-        $product->category()->associate(request()->category_id);
-        $product->save();
+        $category = Category::where('name', $data['category'])->first();
+        $data['category_id'] = $category->id;
 
-        return redirect()->route('product.index', $product);
+        $product = Product::create($data);
+
+        return response()->json($product, 200);
     }
 
     function show(Product $product) {

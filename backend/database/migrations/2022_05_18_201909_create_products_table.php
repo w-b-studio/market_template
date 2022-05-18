@@ -20,17 +20,12 @@ return new class extends Migration
                 ->constrained()
                 ->nullOnDelete();
 
-            $table->foreignIdFor(Request::class)
-                ->nullable()
-                ->constrained()
-                ->nullOnDelete();
-
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('mangas');
+        Schema::dropIfExists('products');
     }
 };
