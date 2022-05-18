@@ -11,24 +11,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->foreignId(Category::class)
-                ->after('id')
-                ->nullable()
-                ->constrained()
-                ->nullOnDelete();
-
+            $table->id();
             $table->string('name');
             $table->double('price');
 
+            $table->foreignIdFor(Category::class)
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
         });
     }
 
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $key = (new Category())->getForeignKey();
-            $table->dropForeign([$key]);
-            $table->removeColumn($key);
-        });
+        Schema::dropIfExists('mangas');
     }
 };
