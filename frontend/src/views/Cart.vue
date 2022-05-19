@@ -56,6 +56,8 @@ export default {
             localStorage.removeItem("cart");
           }
         )
+        window.location.reload(true);
+        localStorage.removeItem("cart");
         }else{
           alert("У вас нету товаров");
         }
