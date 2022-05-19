@@ -45,7 +45,7 @@ export default {
           this.cart_items.forEach((element) => {
           this.products_request.push({product_id: element.id});
         })
-         axios.post('http://localhost:8000/api/request', {
+         axios.post('/api/request', {
           number: this.phone,
           products: this.products_request
           }) .then(function (response) {

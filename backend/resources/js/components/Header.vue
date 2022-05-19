@@ -48,7 +48,7 @@ export default {
   },
   mounted() {
     axios
-      .get('http://localhost:8000/api/category')
+      .get('/api/category')
       .then(response => (this.categories = response.data));
      window.onbeforeunload = function(event)
     {

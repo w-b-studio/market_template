@@ -48,7 +48,7 @@ export default {
         }
       }
       axios
-        .get('http://localhost:8000/api/image/get/'+this.ItemData.id)
+        .get('/api/image/get/'+this.ItemData.id)
         .then(response => (this.image = response.data))
         .catch(function (error) {
           if (error.response) {

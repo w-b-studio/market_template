@@ -68,7 +68,7 @@ export default {
       }
     },
     CreateCategory(){
-      axios.post('http://localhost:8000/api/category', {
+      axios.post('/api/category', {
           name: this.category_name
           }) .then(function (response) {
           console.log(response);
@@ -76,7 +76,7 @@ export default {
         debugger;
     },
     CreateProduct(){
-      axios.post('http://localhost:8000/api/product', {
+      axios.post('/api/product', {
           name: this.product_name,
           price: this.product_price,
           category: this.product_category
@@ -102,7 +102,7 @@ export default {
     }
   },mounted() {
     axios
-      .get('http://localhost:8000/api/request')
+      .get('/api/request')
       .then(response => (this.requests = response.data));
   },
 }

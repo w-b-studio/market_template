@@ -32,7 +32,7 @@ export default {
   },
   mounted() {
     axios
-      .get('http://localhost:8000/api/product')
+      .get('/api/product')
       .then(response => (this.products = response.data));
     console.log(this.$route.params.id);
   },
