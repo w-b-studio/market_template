@@ -20,6 +20,12 @@
           <input type="text" placeholder="Название категории" v-model="product_category">
           <button @click="CreateProduct">Создать</button>
         </form>
+        <form>
+          <legend>Добавить картинку</legend>
+          <input type="text" placeholder="Id продукта" v-model="product_id">
+          <input type="file" name="image" id="file_input" @change="CreateImage">
+          Сначала id потом файл
+        </form>
         <div id="admin_modal">
           <a @click="Modalback">back</a>
           <div class="requests">
@@ -39,6 +45,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      product_id: null,
       requests: [],
       product_name: null,
       product_price: 0,
@@ -76,7 +83,17 @@ export default {
           }) .then(function (response) {
           console.log(response);
         })
-      // this.files = document.getElementById('file_input').file[0];
+    },
+    CreateImage(event){
+      debugger;
+      let bodyFormData = new FormData()
+      bodyFormData.append('image', event.target.files[0])
+      axios({
+          method: 'post', 
+          url:  '/api/create_image/'+ this.product_id, 
+          data: bodyFormData,
+          headers: { "Content-Type": "multipart/form-data" },
+      })
     },
     Modal(){
       document.getElementById("admin_modal").style.visibility = "visible";

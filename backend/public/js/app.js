@@ -2400,10 +2400,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      product_id: null,
       requests: [],
       product_name: null,
       product_price: 0,
@@ -2440,7 +2447,20 @@ __webpack_require__.r(__webpack_exports__);
         category: this.product_category
       }).then(function (response) {
         console.log(response);
-      }); // this.files = document.getElementById('file_input').file[0];
+      });
+    },
+    CreateImage: function CreateImage(event) {
+      debugger;
+      var bodyFormData = new FormData();
+      bodyFormData.append('image', event.target.files[0]);
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: 'post',
+        url: '/api/create_image/' + this.product_id,
+        data: bodyFormData,
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
     },
     Modal: function Modal() {
       document.getElementById("admin_modal").style.visibility = "visible";
@@ -2810,7 +2830,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 13vh;\n  position: fixed;\n  -webkit-backdrop-filter: blur(20px);\n          backdrop-filter: blur(20px);\n  font-family: \"Roboto Flex\", sans-serif;\n  z-index: 10000;\n}\n.wrapper .main_header[data-v-1f42fb90] {\n  width: 100vw;\n  height: 7vh;\n  border-bottom: 1px solid grey;\n  display: flex;\n  align-items: center;\n  flex-direction: row;\n}\n.wrapper .main_header .korzina[data-v-1f42fb90] {\n  width: 2.8vw;\n  height: 5vh;\n  margin-left: 18vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #cacaca;\n  border-radius: 50%;\n  position: relative;\n  z-index: 1;\n  cursor: pointer;\n}\n.wrapper .main_header .korzina .products_number[data-v-1f42fb90] {\n  position: absolute;\n  width: 14px;\n  text-align: center;\n  top: 60%;\n  left: -12%;\n  font-size: 0.7em;\n  background-color: #eb4034;\n  border-radius: 50%;\n  padding: 0.5vh;\n  z-index: 100;\n}\n.wrapper .main_header .link_wrapper[data-v-1f42fb90] {\n  margin-left: 13vw;\n  width: 50vw;\n  height: 7vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90] {\n  text-decoration: none;\n  color: black;\n  font-size: 1.3em;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90]:active {\n  color: black;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90]:hover {\n  color: #eb4034;\n}\n.wrapper .categories_wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 6vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-bottom: 1px solid grey;\n}\n.wrapper .categories_wrapper .categories[data-v-1f42fb90] {\n  width: 80%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 13vh;\n  position: fixed;\n  -webkit-backdrop-filter: blur(20px);\n          backdrop-filter: blur(20px);\n  font-family: \"Roboto Flex\", sans-serif;\n  z-index: 10000;\n}\n.wrapper .main_header[data-v-1f42fb90] {\n  width: 100vw;\n  height: 7vh;\n  border-bottom: 1px solid grey;\n  display: flex;\n  align-items: center;\n  flex-direction: row;\n}\n.wrapper .main_header .korzina[data-v-1f42fb90] {\n  width: 2.8vw;\n  height: 5vh;\n  margin-left: 18vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #cacaca;\n  border-radius: 50%;\n  position: relative;\n  z-index: 1;\n  cursor: pointer;\n}\n.wrapper .main_header .korzina .products_number[data-v-1f42fb90] {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  text-align: center;\n  top: 60%;\n  left: -12%;\n  font-size: 0.7em;\n  background-color: #eb4034;\n  border-radius: 50%;\n  padding: 0.5vh;\n  z-index: 100;\n}\n.wrapper .main_header .link_wrapper[data-v-1f42fb90] {\n  margin-left: 13vw;\n  width: 50vw;\n  height: 7vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90] {\n  text-decoration: none;\n  color: black;\n  font-size: 1.3em;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90]:active {\n  color: black;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90]:hover {\n  color: #eb4034;\n}\n.wrapper .categories_wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 6vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-bottom: 1px solid grey;\n}\n.wrapper .categories_wrapper .categories[data-v-1f42fb90] {\n  width: 80%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4615,10 +4635,12 @@ var render = function () {
     },
     [
       _c("div", { staticClass: "product_wrapper" }, [
-        _c("img", { attrs: { src: "/company_logos/" + _vm.image + ".png" } }),
+        _c("img", { attrs: { src: _vm.image.path } }),
         _vm._v(" "),
         _c("div", { staticClass: "right_wrapper" }, [
-          _c("h1", [_vm._v(_vm._s(_vm.ItemData.name))]),
+          _c("h1", [
+            _vm._v(_vm._s(_vm.ItemData.id) + "." + _vm._s(_vm.ItemData.name)),
+          ]),
           _vm._v(" "),
           _c("h2", [
             _vm._v("Ценна: "),
@@ -4833,6 +4855,37 @@ var render = function () {
           _c("button", { on: { click: _vm.CreateProduct } }, [
             _vm._v("Создать"),
           ]),
+        ]),
+        _vm._v(" "),
+        _c("form", [
+          _c("legend", [_vm._v("Добавить картинку")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.product_id,
+                expression: "product_id",
+              },
+            ],
+            attrs: { type: "text", placeholder: "Id продукта" },
+            domProps: { value: _vm.product_id },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.product_id = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "file", name: "image", id: "file_input" },
+            on: { change: _vm.CreateImage },
+          }),
+          _vm._v("\n        Сначала id потом файл\n      "),
         ]),
         _vm._v(" "),
         _c("div", { attrs: { id: "admin_modal" } }, [

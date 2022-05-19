@@ -24,12 +24,11 @@ class ImageController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
     
         ]);
-        dd("dsa");
         $file = $request->file('image');
         $fileName                   	= $file->getClientOriginalName();
         $fileFullName               	= time()."_".$fileName;
         $path                       	= $fileFullName;
-        $file->move(public_path('profile-pictures/'), $path);
+        $file->move(public_path('product-pictures/'), $path);
         $fullpath                   	= 'product-pictures/'.$path;
 
 
@@ -38,7 +37,6 @@ class ImageController extends Controller
             'product_id'=> $id,
             'path' => $fullpath
         ]);
-        dd($ApplicantImage);
         
         return response(["data"=>$ApplicantImage, "status"=> "Upload was succesfull"],200);
     }

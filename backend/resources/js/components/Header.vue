@@ -94,7 +94,8 @@ export default {
         cursor: pointer
         .products_number
           position: absolute
-          width: 14px
+          width: 25px
+          height: 25px
           text-align: center
           top: 60%
           left: -12%

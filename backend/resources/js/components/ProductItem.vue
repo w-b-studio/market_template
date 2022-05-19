@@ -1,9 +1,9 @@
 <template>
   <div class="product_main_wrapper" v-show="is_visible">
     <div class="product_wrapper">
-      <img v-bind:src="'/company_logos/'+image+'.png'">
+      <img v-bind:src="image.path">
       <div class="right_wrapper">
-        <h1>{{ItemData.name}}</h1>
+        <h1>{{ItemData.id}}.{{ItemData.name}}</h1>
         <h2>Ценна: <span>{{ItemData.price}}</span> ₸</h2>
         <button @click="addToCard">Добавить</button>
       </div>
