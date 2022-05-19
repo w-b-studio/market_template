@@ -1,17 +1,23 @@
 <template>
-  <div class="main_wrapper">
-    <div class="wrapper">
-      <ProductItem 
-        v-for="item in products" 
-        :key="item.id"
-        :ItemData = "item"
-        :is_category="true"/>
+  <div class="wrapper_with_header">
+    <Header />
+    <div class="main_wrapper">
+        
+      <div class="wrapper">
+        <ProductItem 
+          v-for="item in products" 
+          :key="item.id"
+          :ItemData = "item"
+          :is_category="true"/>
+      </div>
     </div>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Header from '../components/Header.vue'
 import ProductItem from '../components/ProductItem.vue'
 export default {
   name:'HomeView',
@@ -21,12 +27,14 @@ export default {
     }
   },
   components:{
-    ProductItem
+    ProductItem,
+    Header
   },
   mounted() {
     axios
-        .get('http://localhost:8000/api/product')
-        .then(response => (this.products = response.data));
+      .get('http://localhost:8000/api/product')
+      .then(response => (this.products = response.data));
+    console.log(this.$route.params.id);
   },
 }
 </script>

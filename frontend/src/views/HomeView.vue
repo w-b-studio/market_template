@@ -1,15 +1,21 @@
 <template>
-  <div class="main_wrapper">
-    <div class="wrapper">
-      <ProductItem 
-        v-for="item in products" 
-        :key="item.id"
-        :ItemData = "item"/>
+  <div class="wrapper_with_header">
+    <Header />
+    <div class="main_wrapper">
+        
+      <div class="wrapper">
+        <ProductItem 
+          v-for="item in products" 
+          :key="item.id"
+          :ItemData = "item"/>
+      </div>
     </div>
+
   </div>
 </template>
 
 <script>
+import Header from '../components/Header.vue'
 import axios from 'axios'
 import ProductItem from '../components/ProductItem.vue'
 export default {
@@ -20,7 +26,8 @@ export default {
     }
   },
   components:{
-    ProductItem
+    ProductItem,
+    Header
   },
   mounted() {
     axios

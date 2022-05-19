@@ -1,6 +1,6 @@
 <template>
   <div class="item_wrapper">
-     <router-link :to='{ path: `/category/${ this.ItemData.id }` }' class="link" >{{ItemData.name}}</router-link>
+     <div class="link" @click="goToPage">{{ItemData.name}}</div>
   </div>
 </template>
 
@@ -12,6 +12,12 @@ export default {
         default: () => {}
     }
   },
+  methods: {
+    goToPage(){
+      this.$router.push('/category/' + this.ItemData.id);
+      window.location.reload(true);
+    }
+  },
 }
 </script>
 
@@ -21,5 +27,6 @@ export default {
       text-decoration: none
       color: black
     .link:hover
+      cursor: pointer
       color: #eb4034
 </style>

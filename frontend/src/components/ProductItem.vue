@@ -32,16 +32,13 @@ export default {
     },
     methods: {
       addToCard(){
-         var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-        if(existingEntries == null) existingEntries = [];
-        var entry = {
-            "id": existingEntries.length + 1,
-            "name": this.ItemData.name,
-            "price": this.ItemData.price
-        };
-        localStorage.setItem("entry", JSON.stringify(entry));
-        existingEntries.push(entry);
-        localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+        if (!localStorage.getItem("cart")) {
+          localStorage.setItem("cart", JSON.stringify([]));
+        }
+        const cartItems = JSON.parse(localStorage.getItem("cart"));
+        cartItems.push(this.ItemData);
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        window.location.reload(true);
       }
     },
     mounted() {
