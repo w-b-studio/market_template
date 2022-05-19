@@ -9,13 +9,13 @@ use App\Models\Request as RequestModel;
 class RequestController extends Controller
 {
     function index() {
-        $data = RequestProduct::with('product','request')->get();
+        $data = RequestModel::with('requestproduct.product','requestproduct.request')->get();
+        return response()->json($data, 200);
     }
 
     function store(Request $request)
     {
         $data = $request->all();
-
         $data_req = RequestModel::create($data);
         if(isset($data['products'])){
             foreach ($data['products'] as $product){
@@ -23,6 +23,8 @@ class RequestController extends Controller
                 RequestProduct::create($product);
             }
         }
+        $products = RequestProduct::with('product','request')->where('product_id', $data['products']->product_id)->first();
+        return response()->json($products, 200);
     }
 
     public function show(\App\Models\Request $request)

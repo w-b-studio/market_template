@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    <CartView id="modal" />
     <div class="main_header">
       <div class="link_wrapper">
         <a href="/">Главная</a>
@@ -30,7 +29,6 @@
 <script>
 import axios from 'axios'
 import CategoryItem from './CategoryItem.vue'
-import CartView from '../views/CartView.vue'
 export default {
   name: 'Header',
   data() {
@@ -41,23 +39,28 @@ export default {
     }
   },
   components:{
-    CategoryItem,
-    CartView
+    CategoryItem
   },
   methods: {
     Modal(){
-      document.getElementById("modal").style.visibility = "visible"
+      this.$router.push('/cart').catch(()=>{});
     }
   },
   mounted() {
     axios
       .get('http://localhost:8000/api/category')
       .then(response => (this.categories = response.data));
-    var all = JSON.parse(localStorage.getItem("allEntries"));
-    if(all != null){
+     window.onbeforeunload = function(event)
+    {
+      var all = JSON.parse(localStorage.getItem("cart"));
       this.cart_number = all.length;
-    }
+    };
   },
+  beforeMount(){
+    var all = JSON.parse(localStorage.getItem("cart"));
+    console.log(all);
+    this.cart_number = all.length;
+  }
 }
 </script>
 
@@ -69,8 +72,7 @@ export default {
     position: fixed
     backdrop-filter: blur(20px)
     font-family: 'Roboto Flex', sans-serif
-    #modal
-      visibility: hidden
+    z-index: 10000
     .main_header
       width: 100vw
       height: 7vh

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Header id="header"/>
     <router-view />
   </div>
 </template>
@@ -12,9 +11,6 @@ export default {
       Header
   },
   mounted() {
-    if(this.$route.path === '/admin'){
-      document.getElementById("header").style.visibility = "hidden"
-    }
   },
 }
 </script>

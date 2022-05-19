@@ -13,4 +13,8 @@ class Request extends Model
         'number',
     ];
     
+    function requestproduct()
+    {
+        return $this->hasMany(RequestProduct::class);
+    }
 }
