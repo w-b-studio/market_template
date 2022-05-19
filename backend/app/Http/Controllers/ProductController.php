@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    function index() {
+        $products = Product::all();
+        return response()->json($products, 200);
+    }
+
+    function store() {
+        $data = request()->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'category' => 'string|required'
+        ]);
+
+        $category = Category::where('name', $data['category'])->first();
+        $data['category_id'] = $category->id;
+
+        $product = Product::create($data);
+
+        return response()->json($product, 200);
+    }
+
+    function show(Product $product) {
+        return view('pages.products.show', [
+            'product' => $product
+        ]);
+    }
+
+    function edit(Product $product) {
+
+        return view('product.form', [
+            'product' => $product
+        ]);
+    }
+
+    function update(Product $product) {
+        $data = request()->validate([
+            'name' => 'required',
+            'price' => 'required',
+        ]);;
+
+        $product->update($data);
+        return redirect()->route('product.show', $product);
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect()->route('product.index');
+    }
+}
