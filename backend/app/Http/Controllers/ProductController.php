@@ -51,9 +51,10 @@ class ProductController extends Controller
         return redirect()->route('product.show', $product);
     }
 
-    public function destroy(Product $product)
+    public function deleteProduct($id)
     {
+        $product = Product::where('id',$id)->first();
         $product->delete();
-        return redirect()->route('product.index');
+        return response()->json(["Delte was succesfully"], 200);
     }
 }

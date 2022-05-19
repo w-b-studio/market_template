@@ -21,10 +21,12 @@ use App\Http\Controllers\ImageController;
 
 Route::get('/category',[ CategoryController::class, 'index']);
 Route::post('/category', [ CategoryController::class, 'store']);
-Route::delete('/category', [ CategoryController::class, 'destroy']);
+Route::delete('/category/{id}', [ CategoryController::class, 'destroy']);
 Route::get('/category/{id}', [CategoryController::class, 'getCategoryById']);
 Route::resource('/request', RequestController::class);
-Route::resource('/product', ProductController::class);
+Route::get('/product', [ ProductController::class, 'index']);
+Route::post('/product', [ ProductController::class, 'store']);
+Route::delete('/product/{id}', [ ProductController::class, 'deleteProduct']);
 
 Route::get('/image/get/{id}', [ImageController::class, 'getImage'])
     ->name('image.get');

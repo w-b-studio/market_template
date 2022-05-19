@@ -2406,10 +2406,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      delete_category: null,
+      delete_product: null,
       product_id: null,
       requests: [],
       product_name: null,
@@ -2461,6 +2471,12 @@ __webpack_require__.r(__webpack_exports__);
           "Content-Type": "multipart/form-data"
         }
       });
+    },
+    DeleteProduct: function DeleteProduct() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('/api/product/' + this.delete_product);
+    },
+    DeleteCategory: function DeleteCategory() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('/api/category/' + this.delete_category);
     },
     Modal: function Modal() {
       document.getElementById("admin_modal").style.visibility = "visible";
@@ -2878,7 +2894,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin_wrapper[data-v-55568bd4] {\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.admin_wrapper form[data-v-55568bd4] {\n  width: 25%;\n  height: 40%;\n  background-color: black;\n  color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.admin_wrapper form legend[data-v-55568bd4] {\n  padding-bottom: 4vh;\n  font-size: 2em;\n}\n.admin_wrapper form input[data-v-55568bd4] {\n  margin-bottom: 2vh;\n}\n.admin_wrapper .template[data-v-55568bd4] {\n  width: 80%;\n  height: 100vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.admin_wrapper .template #admin_modal[data-v-55568bd4] {\n  visibility: hidden;\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  background-color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.admin_wrapper .template #admin_modal .requests[data-v-55568bd4] {\n  width: 80%;\n  height: 90%;\n  background-color: #cacaca;\n  overflow-y: auto;\n}\n.admin_wrapper .template #admin_modal .requests .request_item[data-v-55568bd4] {\n  width: 100%;\n  height: 5vh;\n  margin-top: 2vh;\n  border-bottom: 1px solid black;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.admin_wrapper .template #admin_modal .requests .request_item .req_product[data-v-55568bd4] {\n  width: 50%;\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  overflow-y: auto;\n  overflow-x: hidden;\n  height: 100%;\n}\n.admin_wrapper .template #admin_modal .requests .request_item .req_product span[data-v-55568bd4] {\n  width: 100%;\n}\n.admin_wrapper .template #admin_modal a[data-v-55568bd4] {\n  cursor: pointer;\n  color: red;\n  text-decoration: underline;\n  font-size: 2em;\n  left: 2%;\n  top: 3%;\n  position: absolute;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin_wrapper[data-v-55568bd4] {\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.admin_wrapper .create_category[data-v-55568bd4] {\n  width: 17% !important;\n}\n.admin_wrapper .create_product[data-v-55568bd4] {\n  width: 20% !important;\n}\n.admin_wrapper .delete_product[data-v-55568bd4] {\n  width: 14% !important;\n}\n.admin_wrapper .delete_product legend[data-v-55568bd4] {\n  font-size: 1.2em;\n  padding-bottom: 2vh;\n}\n.admin_wrapper form[data-v-55568bd4] {\n  width: 23%;\n  height: 40%;\n  background-color: black;\n  color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.admin_wrapper form legend[data-v-55568bd4] {\n  padding-bottom: 4vh;\n  font-size: 2em;\n}\n.admin_wrapper form input[data-v-55568bd4] {\n  margin-bottom: 2vh;\n}\n.admin_wrapper .template[data-v-55568bd4] {\n  width: 90%;\n  height: 100vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.admin_wrapper .template #admin_modal[data-v-55568bd4] {\n  visibility: hidden;\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  background-color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.admin_wrapper .template #admin_modal .requests[data-v-55568bd4] {\n  width: 80%;\n  height: 90%;\n  background-color: #cacaca;\n  overflow-y: auto;\n}\n.admin_wrapper .template #admin_modal .requests .request_item[data-v-55568bd4] {\n  width: 100%;\n  height: 5vh;\n  margin-top: 2vh;\n  border-bottom: 1px solid black;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.admin_wrapper .template #admin_modal .requests .request_item .req_product[data-v-55568bd4] {\n  width: 50%;\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  overflow-y: auto;\n  overflow-x: hidden;\n  height: 100%;\n}\n.admin_wrapper .template #admin_modal .requests .request_item .req_product span[data-v-55568bd4] {\n  width: 100%;\n}\n.admin_wrapper .template #admin_modal a[data-v-55568bd4] {\n  cursor: pointer;\n  color: red;\n  text-decoration: underline;\n  font-size: 2em;\n  left: 2%;\n  top: 3%;\n  position: absolute;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4753,7 +4769,7 @@ var render = function () {
         staticClass: "template",
       },
       [
-        _c("form", [
+        _c("form", { staticClass: "create_category" }, [
           _c("legend", [_vm._v("Создать Категорию")]),
           _vm._v(" "),
           _c("input", {
@@ -4786,7 +4802,7 @@ var render = function () {
           _vm._v("Посмотреть заявки"),
         ]),
         _vm._v(" "),
-        _c("form", [
+        _c("form", { staticClass: "create_product" }, [
           _c("legend", [_vm._v("Создать Продукт")]),
           _vm._v(" "),
           _c("input", {
@@ -4886,6 +4902,62 @@ var render = function () {
             on: { change: _vm.CreateImage },
           }),
           _vm._v("\n        Сначала id потом файл\n      "),
+        ]),
+        _vm._v(" "),
+        _c("form", { staticClass: "delete_product" }, [
+          _c("legend", [_vm._v("Удалить продукт")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.delete_product,
+                expression: "delete_product",
+              },
+            ],
+            attrs: { type: "text", placeholder: "Id продукта" },
+            domProps: { value: _vm.delete_product },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.delete_product = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.DeleteProduct } }, [
+            _vm._v("Удалить"),
+          ]),
+          _vm._v(" "),
+          _c("legend", [_vm._v("Удалить Категорию")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.delete_category,
+                expression: "delete_category",
+              },
+            ],
+            attrs: { type: "text", placeholder: "Id категории" },
+            domProps: { value: _vm.delete_category },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.delete_category = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.DeleteCategory } }, [
+            _vm._v("Удалить"),
+          ]),
         ]),
         _vm._v(" "),
         _c("div", { attrs: { id: "admin_modal" } }, [

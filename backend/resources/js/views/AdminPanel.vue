@@ -7,13 +7,13 @@
       <button @click="Login">Login</button>
     </form>
     <div class="template" v-show="this.is_auth">
-        <form>
+        <form class="create_category">
           <legend>Создать Категорию</legend>
           <input type="text" placeholder="Название" v-model="category_name">
           <button @click="CreateCategory">Создать</button>
         </form>
         <button @click="Modal">Посмотреть заявки</button>
-        <form>
+        <form class="create_product">
           <legend>Создать Продукт</legend>
           <input type="text" placeholder="Название" v-model="product_name">
           <input type="text" placeholder="Ценна" v-model="product_price">
@@ -25,6 +25,14 @@
           <input type="text" placeholder="Id продукта" v-model="product_id">
           <input type="file" name="image" id="file_input" @change="CreateImage">
           Сначала id потом файл
+        </form>
+        <form class="delete_product">
+         <legend>Удалить продукт</legend> 
+          <input type="text" placeholder="Id продукта" v-model="delete_product">
+          <button @click="DeleteProduct">Удалить</button>
+         <legend>Удалить Категорию</legend> 
+          <input type="text" placeholder="Id категории" v-model="delete_category">
+          <button @click="DeleteCategory">Удалить</button>
         </form>
         <div id="admin_modal">
           <a @click="Modalback">back</a>
@@ -45,6 +53,8 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      delete_category: null,
+      delete_product: null,
       product_id: null,
       requests: [],
       product_name: null,
@@ -95,6 +105,12 @@ export default {
           headers: { "Content-Type": "multipart/form-data" },
       })
     },
+    DeleteProduct(){
+      axios.delete('/api/product/'+this.delete_product);
+    },
+    DeleteCategory(){
+      axios.delete('/api/category/'+this.delete_category);
+    },
     Modal(){
       document.getElementById("admin_modal").style.visibility = "visible";
     },Modalback(){
@@ -113,10 +129,19 @@ export default {
     width: 100vw
     height: 100vh
     display: flex
-    justify-content: center
     align-items: center
+    justify-content: center
+    .create_category
+      width: 17% !important
+    .create_product
+      width: 20% !important
+    .delete_product
+      width: 14% !important
+      legend
+        font-size: 1.2em
+        padding-bottom: 2vh
     form
-      width: 25%
+      width: 23%
       height: 40%
       background-color: black
       color: white
@@ -130,7 +155,7 @@ export default {
       input
         margin-bottom: 2vh
     .template
-      width: 80%
+      width: 90%
       height: 100vh
       display: flex
       flex-direction: row
