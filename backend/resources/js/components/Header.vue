@@ -2,9 +2,31 @@
   <div class="wrapper">
     <div class="main_header">
       <div class="link_wrapper">
-        <a href="/">Главная</a>
-        <a href="#">О нас</a>
-        <a href="#">Контакты</a>
+        <span class="city"><img src="/assets/location.svg"> Алматы</span>
+        <span class="header_phone"><img src="/assets/phone.svg"> +7 (777) 777 77 77</span>
+        <span class="header_mobile"><img src="/assets/mobile.svg"> +7 777 777 77 77</span>
+      </div>
+      
+    </div>
+    <div class="categories_wrapper">
+      <div class="all" @mouseover="upHere = true" @mouseleave="upHere = false" >
+        <img src="/assets/menu.svg">
+        <span>Все категории</span>
+        <img src="/assets/chevron-down.svg" class="down">
+        <div class="all_categories" v-show="upHere">
+          
+          <CategoryItem class="category_item"
+          v-for="item in categories" 
+            :key="item.id"
+            :ItemData = "item"/>
+          </div>
+      </div>
+      <div class="categories">
+        <CategoryItem class="one_category"
+         v-for="(item,index) in categories" 
+          :key="item.id"
+          :ItemData = "item"
+          :iter = "index"/>
       </div>
       <div class="korzina" @click="Modal">
         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
@@ -13,14 +35,6 @@
         <div class="products_number">
           {{cart_number}}
         </div>
-      </div>
-    </div>
-    <div class="categories_wrapper">
-      <div class="categories">
-        <CategoryItem 
-         v-for="item in categories" 
-          :key="item.id"
-          :ItemData = "item"/>
       </div>
     </div>
   </div>
@@ -33,6 +47,7 @@ export default {
   name: 'Header',
   data() {
     return {
+      upHere : false,
       categories: [],
       is_visible: false,
       cart_number: 0
@@ -68,22 +83,48 @@ export default {
   @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap')
   .wrapper
     width: 100vw
-    height: 13vh
-    position: fixed
-    backdrop-filter: blur(20px)
+    height: 95px
     font-family: 'Roboto Flex', sans-serif
     z-index: 10000
     .main_header
       width: 100vw
-      height: 7vh
+      height: 35px
       border-bottom: 1px solid grey
+      background-color: #2B51A1
       display: flex
       align-items: center
       flex-direction: row
+      justify-content: center
+      .link_wrapper
+        width: 1180px
+        height: 35px
+        display: flex
+        flex-direction: row
+        align-items: center
+        color: white
+        font-size: 0.8em
+        .city
+          font-size: 0.8em
+          width: 8vw
+        .header_mobile
+          font-size: 0.8em
+          margin-left: 2vw
+        .header_phone
+          font-size: 0.8em
+          margin-left:64%
+
+          
+    .categories_wrapper
+      width: 100vw
+      height: 60px
+      display: flex
+      align-items: center
+      border-bottom: 1px solid grey
+      background-color: #FFFFFF
       .korzina
         width: 2.8vw
         height: 5vh
-        margin-left: 18vw
+        margin-left: 8vw
         display: flex
         justify-content: center
         align-items: center
@@ -99,38 +140,48 @@ export default {
           text-align: center
           top: 60%
           left: -12%
-          font-size: 0.7em
-          background-color: #eb4034
+          font-size: 10px
+          color: white
+          background-color: #2B51A1
           border-radius: 50%
           padding: 0.5vh
           z-index: 100
-      .link_wrapper
-        margin-left: 13vw
-        width: 50vw
-        height: 7vh
-        display: flex
-        flex-direction: row
-        align-items: center
-        justify-content: space-around
-        a
-          text-decoration: none
-          color: black
-          font-size: 1.3em
-        a:active
-          color: black
-        a:hover
-          color: #eb4034
-    .categories_wrapper
-      width: 100vw
-      height: 6vh
-      display: flex
-      justify-content: center
-      align-items: center
-      border-bottom: 1px solid grey
       .categories
-        width: 80%
+        width: 41%
         height: 100%
         display: flex
+        color: #4A75CF
+        .one_category
+          padding-left: 2vw
+          padding-right: 2vw
+      .all
+        color: #4A75CF
+        margin-left: 19.5vw
+        cursor: pointer
+        border-right: 1px solid #E6E4E4
+        height: 100%
+        width: 170px
+        display: flex
         align-items: center
-        justify-content: space-around
+        position: relative
+        span
+          font-size: 0.9em
+          margin-left: 0.5vw
+          padding-right: 0.4vw
+        .all_categories
+          position: absolute
+          left: 0%
+          top: 100%
+          width: 170px
+          border-left: 1px solid black
+          border-right: 1px solid black
+          border-bottom: 1px solid black
+          background-color: #FFFFFF
+          .category_item
+            height: 5vh !important
+            border-bottom: gray !important
+            margin-left: 0.5vw
+
+        
+        
 </style>

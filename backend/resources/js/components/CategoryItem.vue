@@ -1,5 +1,5 @@
 <template>
-  <div class="item_wrapper">
+  <div class="item_wrapper" v-show="iter < 5">
      <div class="link" @click="goToPage">{{ItemData.name}}</div>
   </div>
 </template>
@@ -10,6 +10,10 @@ export default {
     ItemData: {
         type: Object,
         default: () => {}
+    },
+    iter: {
+        type: Number,
+        default: 0
     }
   },
   methods: {
@@ -23,10 +27,13 @@ export default {
 
 <style lang="sass" scoped>
   .item_wrapper
+    display: flex
+    align-items: center
     .link
       text-decoration: none
       color: black
+      color: #4A75CF
+      font-size: 0.9em
     .link:hover
       cursor: pointer
-      color: #eb4034
 </style>

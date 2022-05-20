@@ -2178,6 +2178,10 @@ __webpack_require__.r(__webpack_exports__);
     ItemData: {
       type: Object,
       "default": function _default() {}
+    },
+    iter: {
+      type: Number,
+      "default": 0
     }
   },
   methods: {
@@ -2232,12 +2236,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Header',
   data: function data() {
     return {
+      upHere: false,
       categories: [],
       is_visible: false,
       cart_number: 0
@@ -2705,6 +2724,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2821,7 +2877,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".item_wrapper .link[data-v-197b1ec8] {\n  text-decoration: none;\n  color: black;\n}\n.item_wrapper .link[data-v-197b1ec8]:hover {\n  cursor: pointer;\n  color: #eb4034;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".item_wrapper[data-v-197b1ec8] {\n  display: flex;\n  align-items: center;\n}\n.item_wrapper .link[data-v-197b1ec8] {\n  text-decoration: none;\n  color: black;\n  color: #4A75CF;\n  font-size: 0.9em;\n}\n.item_wrapper .link[data-v-197b1ec8]:hover {\n  cursor: pointer;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2846,7 +2902,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 13vh;\n  position: fixed;\n  -webkit-backdrop-filter: blur(20px);\n          backdrop-filter: blur(20px);\n  font-family: \"Roboto Flex\", sans-serif;\n  z-index: 10000;\n}\n.wrapper .main_header[data-v-1f42fb90] {\n  width: 100vw;\n  height: 7vh;\n  border-bottom: 1px solid grey;\n  display: flex;\n  align-items: center;\n  flex-direction: row;\n}\n.wrapper .main_header .korzina[data-v-1f42fb90] {\n  width: 2.8vw;\n  height: 5vh;\n  margin-left: 18vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #cacaca;\n  border-radius: 50%;\n  position: relative;\n  z-index: 1;\n  cursor: pointer;\n}\n.wrapper .main_header .korzina .products_number[data-v-1f42fb90] {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  text-align: center;\n  top: 60%;\n  left: -12%;\n  font-size: 0.7em;\n  background-color: #eb4034;\n  border-radius: 50%;\n  padding: 0.5vh;\n  z-index: 100;\n}\n.wrapper .main_header .link_wrapper[data-v-1f42fb90] {\n  margin-left: 13vw;\n  width: 50vw;\n  height: 7vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90] {\n  text-decoration: none;\n  color: black;\n  font-size: 1.3em;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90]:active {\n  color: black;\n}\n.wrapper .main_header .link_wrapper a[data-v-1f42fb90]:hover {\n  color: #eb4034;\n}\n.wrapper .categories_wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 6vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-bottom: 1px solid grey;\n}\n.wrapper .categories_wrapper .categories[data-v-1f42fb90] {\n  width: 80%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 95px;\n  font-family: \"Roboto Flex\", sans-serif;\n  z-index: 10000;\n}\n.wrapper .main_header[data-v-1f42fb90] {\n  width: 100vw;\n  height: 35px;\n  border-bottom: 1px solid grey;\n  background-color: #2B51A1;\n  display: flex;\n  align-items: center;\n  flex-direction: row;\n  justify-content: center;\n}\n.wrapper .main_header .link_wrapper[data-v-1f42fb90] {\n  width: 1180px;\n  height: 35px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  color: white;\n  font-size: 0.8em;\n}\n.wrapper .main_header .link_wrapper .city[data-v-1f42fb90] {\n  font-size: 0.8em;\n  width: 8vw;\n}\n.wrapper .main_header .link_wrapper .header_mobile[data-v-1f42fb90] {\n  font-size: 0.8em;\n  margin-left: 2vw;\n}\n.wrapper .main_header .link_wrapper .header_phone[data-v-1f42fb90] {\n  font-size: 0.8em;\n  margin-left: 64%;\n}\n.wrapper .categories_wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 60px;\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid grey;\n  background-color: #FFFFFF;\n}\n.wrapper .categories_wrapper .korzina[data-v-1f42fb90] {\n  width: 2.8vw;\n  height: 5vh;\n  margin-left: 8vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #cacaca;\n  border-radius: 50%;\n  position: relative;\n  z-index: 1;\n  cursor: pointer;\n}\n.wrapper .categories_wrapper .korzina .products_number[data-v-1f42fb90] {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  text-align: center;\n  top: 60%;\n  left: -12%;\n  font-size: 10px;\n  color: white;\n  background-color: #2B51A1;\n  border-radius: 50%;\n  padding: 0.5vh;\n  z-index: 100;\n}\n.wrapper .categories_wrapper .categories[data-v-1f42fb90] {\n  width: 41%;\n  height: 100%;\n  display: flex;\n  color: #4A75CF;\n}\n.wrapper .categories_wrapper .categories .one_category[data-v-1f42fb90] {\n  padding-left: 2vw;\n  padding-right: 2vw;\n}\n.wrapper .categories_wrapper .all[data-v-1f42fb90] {\n  color: #4A75CF;\n  margin-left: 19.5vw;\n  cursor: pointer;\n  border-right: 1px solid #E6E4E4;\n  height: 100%;\n  width: 170px;\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.wrapper .categories_wrapper .all span[data-v-1f42fb90] {\n  font-size: 0.9em;\n  margin-left: 0.5vw;\n  padding-right: 0.4vw;\n}\n.wrapper .categories_wrapper .all .all_categories[data-v-1f42fb90] {\n  position: absolute;\n  left: 0%;\n  top: 100%;\n  width: 170px;\n  border-left: 1px solid black;\n  border-right: 1px solid black;\n  border-bottom: 1px solid black;\n  background-color: #FFFFFF;\n}\n.wrapper .categories_wrapper .all .all_categories .category_item[data-v-1f42fb90] {\n  height: 5vh !important;\n  border-bottom: gray !important;\n  margin-left: 0.5vw;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2990,7 +3046,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".main_wrapper[data-v-7059237a] {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.main_wrapper .wrapper[data-v-7059237a] {\n  margin-top: 20vh;\n  width: 80%;\n  height: auto;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".main_wrapper[data-v-7059237a] {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  background-color: #FCFCFC;\n}\n.main_wrapper .main_block[data-v-7059237a] {\n  margin-top: 4vh;\n}\n.main_wrapper .four_wrapper[data-v-7059237a] {\n  margin-top: 1vh;\n  width: 1180px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.main_wrapper .four_wrapper .four_block_item[data-v-7059237a] {\n  height: 180px;\n  width: 24%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.5em;\n  font-weight: 700;\n}\n.main_wrapper .four_wrapper .four_block_item span[data-v-7059237a] {\n  width: 80%;\n  text-align: center;\n}\n.main_wrapper .partners_wrapper[data-v-7059237a] {\n  width: 1180px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n  margin-top: 1vh;\n}\n.main_wrapper .partners_wrapper .partner_item[data-v-7059237a] {\n  width: 10%;\n  height: 60px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid #E6E4E4;\n  background-color: #FFFFFF;\n  border-radius: 10px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4527,11 +4583,25 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "item_wrapper" }, [
-    _c("div", { staticClass: "link", on: { click: _vm.goToPage } }, [
-      _vm._v(_vm._s(_vm.ItemData.name)),
-    ]),
-  ])
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.iter < 5,
+          expression: "iter < 5",
+        },
+      ],
+      staticClass: "item_wrapper",
+    },
+    [
+      _c("div", { staticClass: "link", on: { click: _vm.goToPage } }, [
+        _vm._v(_vm._s(_vm.ItemData.name)),
+      ]),
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -4557,8 +4627,69 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrapper" }, [
-    _c("div", { staticClass: "main_header" }, [
-      _vm._m(0),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "categories_wrapper" }, [
+      _c(
+        "div",
+        {
+          staticClass: "all",
+          on: {
+            mouseover: function ($event) {
+              _vm.upHere = true
+            },
+            mouseleave: function ($event) {
+              _vm.upHere = false
+            },
+          },
+        },
+        [
+          _c("img", { attrs: { src: "/assets/menu.svg" } }),
+          _vm._v(" "),
+          _c("span", [_vm._v("Все категории")]),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "down",
+            attrs: { src: "/assets/chevron-down.svg" },
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.upHere,
+                  expression: "upHere",
+                },
+              ],
+              staticClass: "all_categories",
+            },
+            _vm._l(_vm.categories, function (item) {
+              return _c("CategoryItem", {
+                key: item.id,
+                staticClass: "category_item",
+                attrs: { ItemData: item },
+              })
+            }),
+            1
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "categories" },
+        _vm._l(_vm.categories, function (item, index) {
+          return _c("CategoryItem", {
+            key: item.id,
+            staticClass: "one_category",
+            attrs: { ItemData: item, iter: index },
+          })
+        }),
+        1
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "korzina", on: { click: _vm.Modal } }, [
         _c(
@@ -4587,17 +4718,6 @@ var render = function () {
         ]),
       ]),
     ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "categories_wrapper" }, [
-      _c(
-        "div",
-        { staticClass: "categories" },
-        _vm._l(_vm.categories, function (item) {
-          return _c("CategoryItem", { key: item.id, attrs: { ItemData: item } })
-        }),
-        1
-      ),
-    ]),
   ])
 }
 var staticRenderFns = [
@@ -4605,12 +4725,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "link_wrapper" }, [
-      _c("a", { attrs: { href: "/" } }, [_vm._v("Главная")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("О нас")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Контакты")]),
+    return _c("div", { staticClass: "main_header" }, [
+      _c("div", { staticClass: "link_wrapper" }, [
+        _c("span", { staticClass: "city" }, [
+          _c("img", { attrs: { src: "/assets/location.svg" } }),
+          _vm._v(" Алматы"),
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "header_phone" }, [
+          _c("img", { attrs: { src: "/assets/phone.svg" } }),
+          _vm._v(" +7 (777) 777 77 77"),
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "header_mobile" }, [
+          _c("img", { attrs: { src: "/assets/mobile.svg" } }),
+          _vm._v(" +7 777 777 77 77"),
+        ]),
+      ]),
     ])
   },
 ]
@@ -5216,27 +5347,99 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "wrapper_with_header" },
-    [
-      _c("Header"),
-      _vm._v(" "),
-      _c("div", { staticClass: "main_wrapper" }, [
-        _c(
-          "div",
-          { staticClass: "wrapper" },
-          _vm._l(_vm.products, function (item) {
-            return _c("ProductItem", {
-              key: item.id,
-              attrs: { ItemData: item },
-            })
-          }),
-          1
-        ),
-      ]),
-    ],
+    [_c("Header"), _vm._v(" "), _vm._m(0)],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "main_wrapper" }, [
+      _c("img", {
+        staticClass: "main_block",
+        attrs: { src: "/assets/main_block.png" },
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "four_wrapper" }, [
+        _c(
+          "div",
+          {
+            staticClass: "four_block_item",
+            staticStyle: { "background-color": "#4A75CF", color: "white" },
+          },
+          [_c("span", [_vm._v("Доставка по регионам")])]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "four_block_item",
+            staticStyle: { "background-color": "#E8E9ED", color: "#5D5D64" },
+          },
+          [_c("span", [_vm._v("Оптовые ценны")])]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "four_block_item",
+            staticStyle: { "background-color": "#D7E9F7", color: "#5D5D64" },
+          },
+          [_c("span", [_vm._v("Гарантия качества")])]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "four_block_item",
+            staticStyle: { "background-color": "#FFC626", color: "white" },
+          },
+          [_c("span", [_vm._v("Консультация специалистов")])]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "partners_wrapper" }, [
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/canon.svg" } }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/microsoft.svg" } }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/hp.svg" } }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/samsung.svg" } }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/lenovo.svg" } }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/oppo.svg" } }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/lg.svg" } }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/epson.svg" } }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "partner_item" }, [
+          _c("img", { attrs: { src: "/assets/huawei.svg" } }),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
