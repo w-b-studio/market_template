@@ -1,9 +1,13 @@
 <template>
   <div class="wrapper_with_header">
-    <Header />
     <div class="main_wrapper">
         
       <div class="wrapper">
+        <div class="path">
+          <router-link to="/">Главная</router-link> > <span>Футболки</span>
+        </div>
+        <h2>Футболки</h2>
+        
         <ProductItem 
           v-for="item in products" 
           :key="item.id"
@@ -23,7 +27,8 @@ export default {
   name:'HomeView',
   data() {
     return {
-      products: []
+      products: [],
+      category: []
     }
   },
   components:{
@@ -33,7 +38,9 @@ export default {
   mounted() {
     axios
       .get('/api/product')
-      .then(response => (this.products = response.data));
+      .then(response => (this.products = response.data))
+      .get('/api/category/ds'+ $this.$route.params.id)
+      .then(response => (this.category = response.data));
     console.log(this.$route.params.id);
   },
 }
@@ -47,9 +54,22 @@ export default {
     align-items: center
     justify-content: center
     .wrapper
-      margin-top: 20vh
-      width: 80%
+      margin-top: 2vh
+      width: 870px
       height: auto
-      display: grid
-      grid-template-columns: 1fr 1fr
+      display: flex
+      flex-direction: column
+      .path
+        display: flex
+        flex-direction: row
+        a
+          text-decoration: none
+          color: black
+          padding-right: 1vw
+        a:hover
+          text-decoration: overline
+        a:active
+          color: black
+        span
+          padding-left: 1vw
 </style>

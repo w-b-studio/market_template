@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper_with_header">
-    <Header />
     <div class="main_wrapper">
         <img src="/assets/main_block.png" class="main_block">
         <div class="four_wrapper">
@@ -105,6 +104,7 @@ export default {
           text-align: center
     .partners_wrapper
       width: 1180px
+      height: 15vh
       display: flex
       flex-direction: row
       align-items: center

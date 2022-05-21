@@ -20,19 +20,19 @@
           <h3>Возврат товара</h3>
           <h3>Сервис центры</h3>
         </div>
-        <div class="column_block">
+        <div class="column_block" style="width:14%;">
           <h1>Контакты</h1>
-          <h3>+ 7 (727) 777 77 77 </h3>
-          <h3>+ 7 777 777 77 77</h3>
-          <h3>info@domen.kz</h3>
-          <h3>050013, Казахстан, г. Алматы, ул. Манаса, д. 34А</h3>
+          <h3><img src="/assets/phone.svg"><span>+ 7 (727) 777 77 77 </span></h3>
+          <h3><img src="/assets/watsapp.svg"><span>+ 7 777 777 77 77</span></h3>
+          <h3><img src="/assets/mail.svg"><span>info@domen.kz</span></h3>
+          <h3><img src="/assets/web.svg"><span>050013, Казахстан, г. Алматы, ул. Манаса, д. 34А</span></h3>
         </div>
       </div>
       <div class="bottom_footer">
         <h1>© 2022 IITU</h1>
-        <h1>Политика конфиденциальности</h1>
-        <h1>Публичная оферта</h1>
-        <h1>Карта сайта</h1>
+        <h3>Политика конфиденциальности</h3>
+        <h3>Публичная оферта</h3>
+        <h3>Карта сайта</h3>
       </div>
     </div>
   </div>
@@ -44,10 +44,38 @@
     height: 285px
     display: flex
     align-items: center
+    background-color: #333333
     justify-content: center
     .wrapper
       width: 1180px
       height: 100%
-      background-color: #333333
       color: #FFFFFF
+      .top_footer
+        width: 100%
+        height: 83%
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        border-bottom: 1px solid #E6E4E4
+        .column_block
+          margin-top: 4vh
+          h1
+            font-size: 1.5em
+          h3
+            margin-top: 1vh
+            font-size: 0.7em
+            display: flex
+            align-items: center
+            span
+              margin-left: 0.6vw
+      .bottom_footer
+        display: flex
+        align-items: center
+        height: 17%
+        h1
+          font-size: 0.9em
+        h3
+          font-size: 0.9em
+          margin-left: 8vw
+
 </style>
