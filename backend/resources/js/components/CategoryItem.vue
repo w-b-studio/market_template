@@ -30,6 +30,7 @@ export default {
     display: flex
     align-items: center
     .link
+      margin-left: 0.5vw
       text-decoration: none
       color: black
       color: #4A75CF

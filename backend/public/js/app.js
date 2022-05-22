@@ -2321,6 +2321,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -2346,6 +2353,9 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       var cartItems = JSON.parse(localStorage.getItem("cart"));
+      Object.assign(this.ItemData, {
+        image: this.image
+      });
       cartItems.push(this.ItemData);
       localStorage.setItem("cart", JSON.stringify(cartItems));
       window.location.reload(true);
@@ -2437,10 +2447,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      first_char: null,
+      second_char: null,
+      third_char: null,
+      fourth_char: null,
+      fivth_char: null,
       delete_category: null,
       delete_product: null,
       product_id: null,
@@ -2477,6 +2497,11 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/product', {
         name: this.product_name,
         price: this.product_price,
+        first_char: this.first_char,
+        second_char: this.second_char,
+        third_char: this.third_char,
+        fourth_char: this.fourth_char,
+        fivth_char: this.fivth_char,
         category: this.product_category
       }).then(function (response) {
         console.log(response);
@@ -2562,9 +2587,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Header.vue */ "./resources/js/components/Header.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2587,16 +2611,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Cart',
   data: function data() {
     return {
+      buy_name: "",
+      area: "",
+      city: "",
+      address: "",
+      comments: "",
       phone: null,
       products_request: [],
       cart_items: [],
-      all: []
+      all: [],
+      products_i: 0,
+      products_cost: 0
     };
   },
   props: {
@@ -2615,23 +2671,25 @@ __webpack_require__.r(__webpack_exports__);
             product_id: element.id
           });
         });
-        axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/request', {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/request', {
+          total_price: this.products_cost,
+          buy_name: this.buy_name,
+          area: this.area,
+          city: this.city,
+          address: this.address,
+          comments: this.comments,
           number: this.phone,
           products: this.products_request
         }).then(function (response) {
           console.log(response);
         })["catch"](function (error) {
-          window.location.reload(true);
           localStorage.removeItem("cart");
         });
-        window.location.reload(true);
+        debugger;
         localStorage.removeItem("cart");
       } else {
         alert("У вас нету товаров");
       }
-    },
-    CloseModal: function CloseModal() {
-      this.$router.push('/');
     },
     removeObject: function removeObject(id) {
       var cartItems = JSON.parse(localStorage.getItem("cart"));
@@ -2643,8 +2701,19 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   beforeMount: function beforeMount() {
+    var _this2 = this;
+
     this.cart_items = JSON.parse(localStorage.getItem("cart"));
     console.log(this.cart_items);
+
+    if (this.cart_items != null) {
+      this.cart_items.forEach(function (element) {
+        _this2.products_cost += parseInt(element.price);
+      });
+      this.products_i = this.cart_items.length;
+    }
+
+    console.log(this.products_cost);
   }
 });
 
@@ -2706,7 +2775,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/product').then(function (response) {
       return _this.products = response.data;
-    }).get('/api/category/ds' + $this.$route.params.id).then(function (response) {
+    }), axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/category/' + this.$route.params.id).then(function (response) {
       return _this.category = response.data;
     });
     console.log(this.$route.params.id);
@@ -2898,7 +2967,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".item_wrapper[data-v-197b1ec8] {\n  display: flex;\n  align-items: center;\n}\n.item_wrapper .link[data-v-197b1ec8] {\n  text-decoration: none;\n  color: black;\n  color: #4A75CF;\n  font-size: 0.9em;\n}\n.item_wrapper .link[data-v-197b1ec8]:hover {\n  cursor: pointer;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".item_wrapper[data-v-197b1ec8] {\n  display: flex;\n  align-items: center;\n}\n.item_wrapper .link[data-v-197b1ec8] {\n  margin-left: 0.5vw;\n  text-decoration: none;\n  color: black;\n  color: #4A75CF;\n  font-size: 0.9em;\n}\n.item_wrapper .link[data-v-197b1ec8]:hover {\n  cursor: pointer;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2947,7 +3016,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 95px;\n  font-family: \"Roboto Flex\", sans-serif;\n  z-index: 10000;\n}\n.wrapper .main_header[data-v-1f42fb90] {\n  width: 100vw;\n  height: 35px;\n  border-bottom: 1px solid grey;\n  background-color: #2B51A1;\n  display: flex;\n  align-items: center;\n  flex-direction: row;\n  justify-content: center;\n}\n.wrapper .main_header .link_wrapper[data-v-1f42fb90] {\n  width: 1180px;\n  height: 35px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  color: white;\n  font-size: 0.8em;\n}\n.wrapper .main_header .link_wrapper .city[data-v-1f42fb90] {\n  font-size: 0.8em;\n  width: 8vw;\n}\n.wrapper .main_header .link_wrapper .header_mobile[data-v-1f42fb90] {\n  font-size: 0.8em;\n  margin-left: 2vw;\n}\n.wrapper .main_header .link_wrapper .header_phone[data-v-1f42fb90] {\n  font-size: 0.8em;\n  margin-left: 64%;\n}\n.wrapper .categories_wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 60px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-bottom: 1px solid grey;\n  background-color: #FFFFFF;\n}\n.wrapper .categories_wrapper .korzina[data-v-1f42fb90] {\n  width: 2.8vw;\n  height: 5vh;\n  margin-left: 8vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #cacaca;\n  border-radius: 50%;\n  position: relative;\n  z-index: 1;\n  cursor: pointer;\n}\n.wrapper .categories_wrapper .korzina .products_number[data-v-1f42fb90] {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  text-align: center;\n  top: 60%;\n  left: -12%;\n  font-size: 10px;\n  color: white;\n  background-color: #2B51A1;\n  border-radius: 50%;\n  padding: 0.5vh;\n  z-index: 100;\n}\n.wrapper .categories_wrapper .categories[data-v-1f42fb90] {\n  width: 770px;\n  height: 100%;\n  display: flex;\n  color: #4A75CF;\n}\n.wrapper .categories_wrapper .categories .one_category[data-v-1f42fb90] {\n  padding-left: 2vw;\n  padding-right: 2vw;\n}\n.wrapper .categories_wrapper .second_wrapper[data-v-1f42fb90] {\n  width: 1180px;\n  height: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n.wrapper .categories_wrapper .second_wrapper .all[data-v-1f42fb90] {\n  color: #4A75CF;\n  cursor: pointer;\n  border-right: 1px solid #E6E4E4;\n  height: 100%;\n  width: 170px;\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.wrapper .categories_wrapper .second_wrapper .all span[data-v-1f42fb90] {\n  font-size: 0.9em;\n  margin-left: 0.5vw;\n  padding-right: 0.4vw;\n}\n.wrapper .categories_wrapper .second_wrapper .all .all_categories[data-v-1f42fb90] {\n  position: absolute;\n  left: 0%;\n  top: 100%;\n  width: 170px;\n  border-left: 1px solid black;\n  border-right: 1px solid black;\n  border-bottom: 1px solid black;\n  background-color: #FFFFFF;\n}\n.wrapper .categories_wrapper .second_wrapper .all .all_categories .category_item[data-v-1f42fb90] {\n  height: 5vh !important;\n  border-bottom: gray !important;\n  margin-left: 0.5vw;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 95px;\n  font-family: \"Roboto Flex\", sans-serif;\n  z-index: 10000;\n}\n.wrapper .main_header[data-v-1f42fb90] {\n  width: 100vw;\n  height: 35px;\n  border-bottom: 1px solid grey;\n  background-color: #2B51A1;\n  display: flex;\n  align-items: center;\n  flex-direction: row;\n  justify-content: center;\n}\n.wrapper .main_header .link_wrapper[data-v-1f42fb90] {\n  width: 1180px;\n  height: 35px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  color: white;\n  font-size: 0.8em;\n}\n.wrapper .main_header .link_wrapper .city[data-v-1f42fb90] {\n  font-size: 0.8em;\n  width: 8vw;\n}\n.wrapper .main_header .link_wrapper .header_mobile[data-v-1f42fb90] {\n  font-size: 0.8em;\n  margin-left: 2vw;\n}\n.wrapper .main_header .link_wrapper .header_phone[data-v-1f42fb90] {\n  font-size: 0.8em;\n  margin-left: 64%;\n}\n.wrapper .categories_wrapper[data-v-1f42fb90] {\n  width: 100vw;\n  height: 60px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-bottom: 1px solid grey;\n  background-color: #FFFFFF;\n}\n.wrapper .categories_wrapper .korzina[data-v-1f42fb90] {\n  width: 2.8vw;\n  height: 5vh;\n  margin-left: 8vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #cacaca;\n  border-radius: 50%;\n  position: relative;\n  z-index: 1;\n  cursor: pointer;\n}\n.wrapper .categories_wrapper .korzina .products_number[data-v-1f42fb90] {\n  position: absolute;\n  width: 25px;\n  height: 25px;\n  text-align: center;\n  top: 60%;\n  left: -12%;\n  font-size: 10px;\n  color: white;\n  background-color: #2B51A1;\n  border-radius: 50%;\n  padding: 0.5vh;\n  z-index: 100;\n}\n.wrapper .categories_wrapper .categories[data-v-1f42fb90] {\n  width: 770px;\n  height: 100%;\n  display: flex;\n  color: #4A75CF;\n}\n.wrapper .categories_wrapper .categories .one_category[data-v-1f42fb90] {\n  padding-left: 2vw;\n  padding-right: 2vw;\n}\n.wrapper .categories_wrapper .second_wrapper[data-v-1f42fb90] {\n  width: 1180px;\n  height: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n.wrapper .categories_wrapper .second_wrapper .all[data-v-1f42fb90] {\n  color: #4A75CF;\n  cursor: pointer;\n  border-right: 1px solid #E6E4E4;\n  height: 100%;\n  width: 170px;\n  z-index: 9999;\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.wrapper .categories_wrapper .second_wrapper .all span[data-v-1f42fb90] {\n  font-size: 0.9em;\n  margin-left: 0.5vw;\n  padding-right: 0.4vw;\n}\n.wrapper .categories_wrapper .second_wrapper .all .all_categories[data-v-1f42fb90] {\n  position: absolute;\n  left: 0%;\n  top: 100%;\n  width: 170px;\n  border-left: 1px solid black;\n  border-right: 1px solid black;\n  border-bottom: 1px solid black;\n  background-color: #FFFFFF;\n}\n.wrapper .categories_wrapper .second_wrapper .all .all_categories .category_item[data-v-1f42fb90] {\n  height: 5vh !important;\n  border-top: 1px solid gray !important;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2971,7 +3040,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product_main_wrapper[data-v-398a8687] {\n  width: 100%;\n  height: 38.4vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  padding-bottom: 3vh;\n}\n.product_main_wrapper .product_wrapper[data-v-398a8687] {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: row;\n  background-color: #FFFFFF;\n}\n.product_main_wrapper .product_wrapper img[data-v-398a8687] {\n  margin-left: 1.8vw;\n  margin-top: 2vh;\n  width: 200px;\n  height: 200px;\n  background-color: gray;\n  background-size: 100% 100%;\n}\n.product_main_wrapper .product_wrapper .right_wrapper[data-v-398a8687] {\n  margin-left: 2vw;\n  width: 47%;\n}\n.product_main_wrapper .product_wrapper .right_wrapper h1[data-v-398a8687] {\n  font-size: 1.3em;\n  margin-top: 2vh;\n  border-bottom: 1px solid #E6E4E4;\n  padding-bottom: 1.5vh;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block[data-v-398a8687] {\n  right: 3%;\n  position: absolute;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block button[data-v-398a8687] {\n  font-size: 1em;\n  color: white;\n  background-color: #FC911F;\n  border: none;\n  padding-top: 0.8vh;\n  padding-bottom: 0.8vh;\n  padding-left: 1vw;\n  padding-right: 1vw;\n  cursor: pointer;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block h2[data-v-398a8687] {\n  font-size: 1.1em;\n  font-weight: 700;\n  margin-top: 10vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block h2 span[data-v-398a8687] {\n  font-weight: 700;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product_main_wrapper[data-v-398a8687] {\n  width: 100%;\n  border: 1px solid #E6E4E4;\n  height: 34vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  padding-bottom: 3vh;\n}\n.product_main_wrapper .product_wrapper[data-v-398a8687] {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: row;\n  background-color: #FFFFFF;\n}\n.product_main_wrapper .product_wrapper img[data-v-398a8687] {\n  margin-left: 1.8vw;\n  margin-top: 2vh;\n  width: 200px;\n  height: 200px;\n  background-color: gray;\n  background-size: 100% 100%;\n}\n.product_main_wrapper .product_wrapper .right_wrapper[data-v-398a8687] {\n  margin-left: 2vw;\n  width: 47%;\n}\n.product_main_wrapper .product_wrapper .right_wrapper h1[data-v-398a8687] {\n  font-size: 1.3em;\n  margin-top: 2vh;\n  border-bottom: 1px solid #E6E4E4;\n  padding-bottom: 1.5vh;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block[data-v-398a8687] {\n  right: 3%;\n  position: absolute;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block button[data-v-398a8687] {\n  font-size: 1em;\n  color: white;\n  background-color: #FC911F;\n  border: none;\n  padding-top: 0.8vh;\n  padding-bottom: 0.8vh;\n  padding-left: 1vw;\n  padding-right: 1vw;\n  cursor: pointer;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block h2[data-v-398a8687] {\n  font-size: 1.1em;\n  font-weight: 700;\n  margin-top: -7vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block h2 span[data-v-398a8687] {\n  font-weight: 700;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2995,7 +3064,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin_wrapper[data-v-55568bd4] {\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.admin_wrapper .create_category[data-v-55568bd4] {\n  width: 17% !important;\n}\n.admin_wrapper .create_product[data-v-55568bd4] {\n  width: 20% !important;\n}\n.admin_wrapper .delete_product[data-v-55568bd4] {\n  width: 14% !important;\n}\n.admin_wrapper .delete_product legend[data-v-55568bd4] {\n  font-size: 1.2em;\n  padding-bottom: 2vh;\n}\n.admin_wrapper form[data-v-55568bd4] {\n  width: 23%;\n  height: 40%;\n  background-color: black;\n  color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.admin_wrapper form legend[data-v-55568bd4] {\n  padding-bottom: 4vh;\n  font-size: 2em;\n}\n.admin_wrapper form input[data-v-55568bd4] {\n  margin-bottom: 2vh;\n}\n.admin_wrapper .template[data-v-55568bd4] {\n  width: 90%;\n  height: 100vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.admin_wrapper .template #admin_modal[data-v-55568bd4] {\n  visibility: hidden;\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  background-color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.admin_wrapper .template #admin_modal .requests[data-v-55568bd4] {\n  width: 80%;\n  height: 90%;\n  background-color: #cacaca;\n  overflow-y: auto;\n}\n.admin_wrapper .template #admin_modal .requests .request_item[data-v-55568bd4] {\n  width: 100%;\n  height: 5vh;\n  margin-top: 2vh;\n  border-bottom: 1px solid black;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.admin_wrapper .template #admin_modal .requests .request_item .req_product[data-v-55568bd4] {\n  width: 50%;\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  overflow-y: auto;\n  overflow-x: hidden;\n  height: 100%;\n}\n.admin_wrapper .template #admin_modal .requests .request_item .req_product span[data-v-55568bd4] {\n  width: 100%;\n}\n.admin_wrapper .template #admin_modal a[data-v-55568bd4] {\n  cursor: pointer;\n  color: red;\n  text-decoration: underline;\n  font-size: 2em;\n  left: 2%;\n  top: 3%;\n  position: absolute;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin_wrapper[data-v-55568bd4] {\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.admin_wrapper .create_category[data-v-55568bd4] {\n  width: 17% !important;\n}\n.admin_wrapper .create_product[data-v-55568bd4] {\n  width: 20% !important;\n  height: 90vh;\n}\n.admin_wrapper .delete_product[data-v-55568bd4] {\n  width: 14% !important;\n}\n.admin_wrapper .delete_product legend[data-v-55568bd4] {\n  font-size: 1.2em;\n  padding-bottom: 2vh;\n}\n.admin_wrapper form[data-v-55568bd4] {\n  width: 23%;\n  height: 40%;\n  background-color: black;\n  color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.admin_wrapper form legend[data-v-55568bd4] {\n  padding-bottom: 4vh;\n  font-size: 2em;\n}\n.admin_wrapper form input[data-v-55568bd4] {\n  margin-bottom: 2vh;\n}\n.admin_wrapper .template[data-v-55568bd4] {\n  width: 90%;\n  height: 100vh;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.admin_wrapper .template #admin_modal[data-v-55568bd4] {\n  visibility: hidden;\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  background-color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.admin_wrapper .template #admin_modal .requests[data-v-55568bd4] {\n  width: 80%;\n  height: 90%;\n  background-color: #cacaca;\n  overflow-y: auto;\n}\n.admin_wrapper .template #admin_modal .requests .request_item[data-v-55568bd4] {\n  width: 100%;\n  height: 5vh;\n  margin-top: 2vh;\n  border-bottom: 1px solid black;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n}\n.admin_wrapper .template #admin_modal .requests .request_item .req_product[data-v-55568bd4] {\n  width: 50%;\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  overflow-y: auto;\n  overflow-x: hidden;\n  height: 100%;\n}\n.admin_wrapper .template #admin_modal .requests .request_item .req_product span[data-v-55568bd4] {\n  width: 100%;\n}\n.admin_wrapper .template #admin_modal a[data-v-55568bd4] {\n  cursor: pointer;\n  color: red;\n  text-decoration: underline;\n  font-size: 2em;\n  left: 2%;\n  top: 3%;\n  position: absolute;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3043,7 +3112,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".modal_main_wrapper[data-v-29106a82] {\n  width: 100vw;\n  height: 100vh;\n  position: absolute;\n  z-index: 1000;\n  background-color: rgba(0, 0, 0, 0.8);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.modal_main_wrapper .modal_wrapper[data-v-29106a82] {\n  width: 70%;\n  height: 80%;\n  background-color: white;\n  border-radius: 20px;\n  position: relative;\n  z-index: 9999;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper[data-v-29106a82] {\n  margin-top: 5vh;\n  overflow-y: auto;\n  height: 70%;\n}\n.modal_main_wrapper .modal_wrapper form[data-v-29106a82] {\n  margin-top: 2.5vh;\n  margin-left: 30vw;\n}\n.modal_main_wrapper .modal_wrapper form legend[data-v-29106a82] {\n  padding-bottom: 1.5vh;\n}\n.modal_main_wrapper .modal_wrapper form input[data-v-29106a82] {\n  height: 3vh;\n  font-size: 1.5vh;\n}\n.modal_main_wrapper .modal_wrapper form button[data-v-29106a82] {\n  margin-left: 1vw;\n  height: 3.5vh;\n  width: 8vw;\n  border-radius: 10px;\n  font-size: 1.5vh;\n  background-color: #eb4034;\n  cursor: pointer;\n}\n.modal_main_wrapper .modal_wrapper h1[data-v-29106a82] {\n  margin-left: 4vw;\n  font-size: 1.5em;\n}\n.modal_main_wrapper .modal_wrapper .close[data-v-29106a82] {\n  right: 4%;\n  top: 4%;\n  position: absolute;\n  color: black;\n  font-weight: 800;\n  font-size: 2em;\n}\n.modal_main_wrapper .modal_wrapper .close[data-v-29106a82]:hover {\n  cursor: pointer;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".modal_main_wrapper[data-v-29106a82] {\n  width: 100vw;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.modal_main_wrapper .path[data-v-29106a82] {\n  width: 1180px;\n  margin-top: 2vh;\n}\n.modal_main_wrapper .path a[data-v-29106a82] {\n  padding-right: 1vw;\n  text-decoration: none;\n  color: black;\n}\n.modal_main_wrapper .path a[data-v-29106a82]:hover {\n  text-decoration: underline;\n}\n.modal_main_wrapper .path a[data-v-29106a82]:active {\n  color: black;\n}\n.modal_main_wrapper .path span[data-v-29106a82] {\n  padding-left: 1vw;\n}\n.modal_main_wrapper .path h2[data-v-29106a82] {\n  margin-top: 1vh;\n  padding-bottom: 2vh;\n}\n.modal_main_wrapper .modal_wrapper[data-v-29106a82] {\n  width: 870px;\n  margin-right: 310px;\n  height: 80%;\n  background-color: #FFFFFF;\n  position: relative;\n  border: 1px solid #E6E4E4;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper img[data-v-29106a82] {\n  width: 100px;\n  margin-left: 2vw;\n  height: 100px;\n  background-color: gray;\n  background-size: 100% 100%;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper .p_block[data-v-29106a82] {\n  width: 70%;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper .p_block .p_name[data-v-29106a82] {\n  margin-left: 2vw;\n  font-size: 1.2em;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper .p_block ul[data-v-29106a82] {\n  font-size: 0.8em;\n  margin-bottom: 0.6vh;\n  margin-left: 1vw;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper .p_block .delete_object[data-v-29106a82] {\n  font-weight: 700;\n  font-size: 0.8em;\n  margin-left: 3vw;\n  cursor: pointer;\n  color: #4A75CF;\n}\n.modal_main_wrapper .modal_wrapper h1[data-v-29106a82] {\n  margin-top: 2vh;\n  width: 100%;\n  border-bottom: 1px solid #E6E4E4;\n  font-size: 1.2em;\n}\n.modal_main_wrapper .modal_wrapper h1 span[data-v-29106a82] {\n  margin-left: 1vw;\n}\n.modal_main_wrapper .modal_wrapper .close[data-v-29106a82] {\n  right: 4%;\n  top: 4%;\n  position: absolute;\n  color: black;\n  font-weight: 800;\n  font-size: 2em;\n}\n.modal_main_wrapper .modal_wrapper .close[data-v-29106a82]:hover {\n  cursor: pointer;\n}\n.modal_main_wrapper .total[data-v-29106a82] {\n  height: 27vh;\n  width: 16vw;\n  position: absolute;\n  right: 220px;\n  border: 1px solid #E6E4E4;\n  background-color: #FFFFFF;\n  top: 22vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.modal_main_wrapper .total .total_num[data-v-29106a82] {\n  font-size: 1.2em;\n  margin-top: 2vh;\n}\n.modal_main_wrapper .total .total_sum[data-v-29106a82] {\n  margin-top: 1vh;\n  font-weight: 700;\n  height: 35%;\n  width: 80%;\n  font-size: 1.2em;\n  text-align: center;\n  border-bottom: 1px solid #E6E4E4;\n}\n.modal_main_wrapper .total button[data-v-29106a82] {\n  margin-top: 8%;\n  color: white;\n  font-weight: 700;\n  background-color: #FC8507;\n  height: 22%;\n  width: 63%;\n  border: none;\n}\n.modal_main_wrapper h2[data-v-29106a82] {\n  width: 1180px;\n  margin-top: 3vh;\n  font-size: 1.2em;\n}\n.modal_main_wrapper form[data-v-29106a82] {\n  width: 870px;\n  background-color: #FFFFFF;\n  margin-left: -16.5vw;\n  border: 1px solid #E6E4E4;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n.modal_main_wrapper form .input_block[data-v-29106a82] {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n.modal_main_wrapper form .input_block h3[data-v-29106a82] {\n  width: 13vw;\n  margin-left: 1vw;\n  margin-top: 1vh;\n  margin-bottom: 1vh;\n  font-size: 1em;\n}\n.modal_main_wrapper form .input_block input[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 4vh;\n  width: 72%;\n  font-size: 2vh;\n}\n.modal_main_wrapper form .input_block select[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 4vh;\n  width: 72%;\n  font-size: 2vh;\n}\n.modal_main_wrapper form .input_block textarea[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 12vh;\n  width: 72%;\n  font-size: 2vh;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3067,7 +3136,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".main_wrapper[data-v-d5f6e83c] {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.main_wrapper .wrapper[data-v-d5f6e83c] {\n  margin-top: 2vh;\n  width: 870px;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n}\n.main_wrapper .wrapper .path[data-v-d5f6e83c] {\n  display: flex;\n  flex-direction: row;\n}\n.main_wrapper .wrapper .path a[data-v-d5f6e83c] {\n  text-decoration: none;\n  color: black;\n  padding-right: 1vw;\n}\n.main_wrapper .wrapper .path a[data-v-d5f6e83c]:hover {\n  text-decoration: overline;\n}\n.main_wrapper .wrapper .path a[data-v-d5f6e83c]:active {\n  color: black;\n}\n.main_wrapper .wrapper .path span[data-v-d5f6e83c] {\n  padding-left: 1vw;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".main_wrapper[data-v-d5f6e83c] {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.main_wrapper .wrapper[data-v-d5f6e83c] {\n  margin-top: 2vh;\n  width: 870px;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n}\n.main_wrapper .wrapper .path[data-v-d5f6e83c] {\n  display: flex;\n  flex-direction: row;\n}\n.main_wrapper .wrapper .path a[data-v-d5f6e83c] {\n  text-decoration: none;\n  color: black;\n  padding-right: 1vw;\n}\n.main_wrapper .wrapper .path a[data-v-d5f6e83c]:hover {\n  text-decoration: underline;\n}\n.main_wrapper .wrapper .path a[data-v-d5f6e83c]:active {\n  color: black;\n}\n.main_wrapper .wrapper .path span[data-v-d5f6e83c] {\n  padding-left: 1vw;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5041,6 +5110,18 @@ var render = function () {
             _vm._v(_vm._s(_vm.ItemData.id) + "." + _vm._s(_vm.ItemData.name)),
           ]),
           _vm._v(" "),
+          _c("ul", [
+            _c("li", [_vm._v(_vm._s(_vm.ItemData.first_char))]),
+            _vm._v(" "),
+            _c("li", [_vm._v(_vm._s(_vm.ItemData.second_char))]),
+            _vm._v(" "),
+            _c("li", [_vm._v(_vm._s(_vm.ItemData.third_char))]),
+            _vm._v(" "),
+            _c("li", [_vm._v(_vm._s(_vm.ItemData.fourth_char))]),
+            _vm._v(" "),
+            _c("li", [_vm._v(_vm._s(_vm.ItemData.fivth_char))]),
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "right_block" }, [
             _c("h2", [
               _vm._v("Ценна"),
@@ -5229,6 +5310,111 @@ var render = function () {
                   return
                 }
                 _vm.product_price = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.first_char,
+                expression: "first_char",
+              },
+            ],
+            attrs: { type: "text", placeholder: "Характеристика 1" },
+            domProps: { value: _vm.first_char },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.first_char = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.second_char,
+                expression: "second_char",
+              },
+            ],
+            attrs: { type: "text", placeholder: "Характеристика 2" },
+            domProps: { value: _vm.second_char },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.second_char = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.third_char,
+                expression: "third_char",
+              },
+            ],
+            attrs: { type: "text", placeholder: "Характеристика 3" },
+            domProps: { value: _vm.third_char },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.third_char = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fourth_char,
+                expression: "fourth_char",
+              },
+            ],
+            attrs: { type: "text", placeholder: "Характеристика 4" },
+            domProps: { value: _vm.fourth_char },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.fourth_char = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fivth_char,
+                expression: "fivth_char",
+              },
+            ],
+            attrs: { type: "text", placeholder: "Характеристика 5" },
+            domProps: { value: _vm.fivth_char },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.fivth_char = $event.target.value
               },
             },
           }),
@@ -5437,12 +5623,21 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "modal_main_wrapper" }, [
+    _c(
+      "div",
+      { staticClass: "path" },
+      [
+        _c("router-link", { attrs: { to: "/" } }, [_vm._v("Главная")]),
+        _vm._v(" > "),
+        _c("span", [_vm._v("Оформление заказов")]),
+        _vm._v(" "),
+        _c("h2", [_vm._v("Оформление заказов")]),
+      ],
+      1
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "modal_wrapper" }, [
-      _c("h1", [_vm._v("Ваша корзина")]),
-      _vm._v(" "),
-      _c("span", { staticClass: "close", on: { click: _vm.CloseModal } }, [
-        _vm._v("X"),
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -5454,53 +5649,94 @@ var render = function () {
               key: c.id,
               staticStyle: {
                 width: "100%",
-                height: "6vh",
-                "background-color": "#cacaca",
+                height: "120px",
+                "background-color": "#FFFFFF",
+                "border-bottom": "1px solid #E6E4E4",
                 display: "flex",
                 "align-items": "center",
-                "justify-content": "space-around",
-                "margin-top": "2vh",
               },
             },
             [
-              _vm._v("\n          " + _vm._s(c.name)),
-              _c("span", [_vm._v("Ценна : " + _vm._s(c.price) + " ₸")]),
+              _c("img", { attrs: { src: c.image.path } }),
               _vm._v(" "),
-              _c(
-                "svg",
-                {
-                  staticClass: "bi bi-bucket",
-                  staticStyle: { cursor: "pointer" },
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "20",
-                    height: "20",
-                    fill: "currentColor",
-                    viewBox: "0 0 16 16",
-                  },
-                  on: {
-                    click: function ($event) {
-                      return _vm.removeObject(index)
+              _c("div", { staticClass: "p_block" }, [
+                _c("span", { staticClass: "p_name" }, [_vm._v(_vm._s(c.name))]),
+                _vm._v(" "),
+                _c("ul", [
+                  _c("li", [_vm._v(_vm._s(c.first_char))]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v(_vm._s(c.second_char))]),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "delete_object",
+                    on: {
+                      click: function ($event) {
+                        return _vm.removeObject(index)
+                      },
                     },
                   },
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      d: "M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z",
-                    },
-                  }),
-                ]
-              ),
+                  [_vm._v(" Удалить ")]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(c.price) + " ₸")]),
             ]
           )
         }),
         0
       ),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "total" }, [
+      _c("div", { staticClass: "total_num" }, [
+        _vm._v("Итого " + _vm._s(_vm.products_i) + " товара на сумму"),
+      ]),
       _vm._v(" "),
-      _c("form", [
-        _c("legend", [_vm._v("Введите ваш номер")]),
-        _vm._v(" "),
+      _c("div", { staticClass: "total_sum" }, [
+        _vm._v(_vm._s(_vm.products_cost) + " ₸"),
+      ]),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.TakeOrder } }, [
+        _vm._v("Оформить заказ"),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("h2", [_vm._v("Покупатель")]),
+    _vm._v(" "),
+    _c("form", { staticStyle: { height: "12vh" } }, [
+      _c("div", { staticClass: "input_block" }, [
+        _c("h3", [_vm._v("ФИО")]),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.buy_name,
+              expression: "buy_name",
+            },
+          ],
+          attrs: {
+            type: "text",
+            placeholder: "Иванов Иван Иванович",
+            required: "",
+          },
+          domProps: { value: _vm.buy_name },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.buy_name = $event.target.value
+            },
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input_block" }, [
+        _c("h3", [_vm._v("Мобильный телефон")]),
         _c("input", {
           directives: [
             {
@@ -5527,15 +5763,139 @@ var render = function () {
             },
           },
         }),
-        _vm._v(" "),
-        _c("button", { on: { click: _vm.TakeOrder } }, [
-          _vm._v("Оставить заявку"),
-        ]),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("h2", [_vm._v("Адрес доставки")]),
+    _vm._v(" "),
+    _c("form", { staticStyle: { height: "30vh", "margin-bottom": "5vh" } }, [
+      _c("div", { staticClass: "input_block" }, [
+        _c("h3", [_vm._v("Область")]),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.area,
+                expression: "area",
+              },
+            ],
+            on: {
+              change: function ($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function (o) {
+                    return o.selected
+                  })
+                  .map(function (o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.area = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+            },
+          },
+          [
+            _c("option", { attrs: { value: "Алматинская область" } }, [
+              _vm._v("Алматинская область"),
+            ]),
+          ]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input_block" }, [
+        _c("h3", [_vm._v("Город / район")]),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.city,
+                expression: "city",
+              },
+            ],
+            on: {
+              change: function ($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function (o) {
+                    return o.selected
+                  })
+                  .map(function (o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.city = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+            },
+          },
+          [_c("option", { attrs: { value: "Алматы" } }, [_vm._v("Алматы")])]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input_block" }, [
+        _c("h3", [_vm._v("Адрес")]),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.address,
+              expression: "address",
+            },
+          ],
+          attrs: { type: "text", placeholder: "Ваш адрес", required: "" },
+          domProps: { value: _vm.address },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.address = $event.target.value
+            },
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input_block" }, [
+        _c("h3", [_vm._v("Комментарии")]),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.comments,
+              expression: "comments",
+            },
+          ],
+          domProps: { value: _vm.comments },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.comments = $event.target.value
+            },
+          },
+        }),
       ]),
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", [_c("span", [_vm._v("Товары в корзине")])])
+  },
+]
 render._withStripped = true
 
 
@@ -5570,12 +5930,12 @@ var render = function () {
             [
               _c("router-link", { attrs: { to: "/" } }, [_vm._v("Главная")]),
               _vm._v(" > "),
-              _c("span", [_vm._v("Футболки")]),
+              _c("span", [_vm._v(_vm._s(_vm.category.name))]),
             ],
             1
           ),
           _vm._v(" "),
-          _c("h2", [_vm._v("Футболки")]),
+          _c("h2", [_vm._v(_vm._s(_vm.category.name))]),
           _vm._v(" "),
           _vm._l(_vm.products, function (item) {
             return _c("ProductItem", {

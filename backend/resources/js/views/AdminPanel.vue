@@ -17,6 +17,11 @@
           <legend>Создать Продукт</legend>
           <input type="text" placeholder="Название" v-model="product_name">
           <input type="text" placeholder="Ценна" v-model="product_price">
+          <input type="text" placeholder="Характеристика 1" v-model="first_char">
+          <input type="text" placeholder="Характеристика 2" v-model="second_char">
+          <input type="text" placeholder="Характеристика 3" v-model="third_char">
+          <input type="text" placeholder="Характеристика 4" v-model="fourth_char">
+          <input type="text" placeholder="Характеристика 5" v-model="fivth_char">
           <input type="text" placeholder="Название категории" v-model="product_category">
           <button @click="CreateProduct">Создать</button>
         </form>
@@ -53,6 +58,11 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      first_char: null,
+      second_char: null,
+      third_char: null,
+      fourth_char: null,
+      fivth_char: null,
       delete_category: null,
       delete_product: null,
       product_id: null,
@@ -89,6 +99,11 @@ export default {
       axios.post('/api/product', {
           name: this.product_name,
           price: this.product_price,
+          first_char: this.first_char,
+          second_char: this.second_char,
+          third_char: this.third_char,
+          fourth_char: this.fourth_char,
+          fivth_char: this.fivth_char,
           category: this.product_category
           }) .then(function (response) {
           console.log(response);
@@ -135,6 +150,7 @@ export default {
       width: 17% !important
     .create_product
       width: 20% !important
+      height: 90vh
     .delete_product
       width: 14% !important
       legend

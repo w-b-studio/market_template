@@ -17,7 +17,12 @@ class ProductController extends Controller
         $data = request()->validate([
             'name' => 'required',
             'price' => 'required',
-            'category' => 'string|required'
+            'category' => 'string|required',
+            'first_char' => 'string',
+            'second_char' => 'string',
+            'third_char' => 'string',
+            'fourth_char' => 'string',
+            'fivth_char' => 'string'
         ]);
 
         $category = Category::where('name', $data['category'])->first();

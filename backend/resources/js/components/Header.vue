@@ -169,6 +169,7 @@ export default {
           border-right: 1px solid #E6E4E4
           height: 100%
           width: 170px
+          z-index: 9999
           display: flex
           align-items: center
           position: relative
@@ -187,8 +188,7 @@ export default {
             background-color: #FFFFFF
             .category_item
               height: 5vh !important
-              border-bottom: gray !important
-              margin-left: 0.5vw
+              border-top: 1px solid gray !important
 
         
         

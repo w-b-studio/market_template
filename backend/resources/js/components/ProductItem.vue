@@ -4,6 +4,13 @@
       <img v-bind:src="image.path">
       <div class="right_wrapper">
         <h1>{{ItemData.id}}.{{ItemData.name}}</h1>
+        <ul>
+          <li>{{ItemData.first_char}}</li>
+          <li>{{ItemData.second_char}}</li>
+          <li>{{ItemData.third_char}}</li>
+          <li>{{ItemData.fourth_char}}</li>
+          <li>{{ItemData.fivth_char}}</li>
+        </ul>
         <div class="right_block">
           <h2>Ценна<span>{{ItemData.price}} ₸</span></h2>
           <button @click="addToCard">Добавить</button>
@@ -38,6 +45,7 @@ export default {
           localStorage.setItem("cart", JSON.stringify([]));
         }
         const cartItems = JSON.parse(localStorage.getItem("cart"));
+        Object.assign(this.ItemData, {image: this.image});
         cartItems.push(this.ItemData);
         localStorage.setItem("cart", JSON.stringify(cartItems));
         window.location.reload(true);
@@ -66,7 +74,8 @@ export default {
 <style lang="sass" scoped>
   .product_main_wrapper
     width: 100%
-    height: 38.4vh
+    border: 1px solid #E6E4E4
+    height: 34vh
     display: flex
     align-items: center
     justify-content: center
@@ -109,7 +118,7 @@ export default {
           h2
             font-size: 1.1em
             font-weight: 700
-            margin-top: 10vh
+            margin-top: -7vh
             display: flex
             flex-direction: column
             align-items: center

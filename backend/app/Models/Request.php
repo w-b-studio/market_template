@@ -10,7 +10,13 @@ class Request extends Model
     use HasFactory;
 
     protected $fillable = [
+        'total_price',
+        'buy_name',
         'number',
+        'area',
+        'city',
+        'address',
+        'comments',
     ];
     
     function requestproduct()

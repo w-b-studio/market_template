@@ -11,7 +11,13 @@ return new class extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
-            $table->string('number');
+            $table->string('buy_name')->nullable();
+            $table->double('total_price')->nullable();
+            $table->string('number')->nullable();
+            $table->string('area')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
+            $table->string('comments')->nullable();
             $table->timestamps();
         });
     }

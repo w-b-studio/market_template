@@ -4,9 +4,9 @@
         
       <div class="wrapper">
         <div class="path">
-          <router-link to="/">Главная</router-link> > <span>Футболки</span>
+          <router-link to="/">Главная</router-link> > <span>{{category.name}}</span>
         </div>
-        <h2>Футболки</h2>
+        <h2>{{category.name}}</h2>
         
         <ProductItem 
           v-for="item in products" 
@@ -38,8 +38,9 @@ export default {
   mounted() {
     axios
       .get('/api/product')
-      .then(response => (this.products = response.data))
-      .get('/api/category/ds'+ $this.$route.params.id)
+      .then(response => (this.products = response.data)),
+    axios
+      .get('/api/category/'+ this.$route.params.id)
       .then(response => (this.category = response.data));
     console.log(this.$route.params.id);
   },
@@ -67,7 +68,7 @@ export default {
           color: black
           padding-right: 1vw
         a:hover
-          text-decoration: overline
+          text-decoration: underline
         a:active
           color: black
         span

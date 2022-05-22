@@ -14,6 +14,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('price');
+            $table->string('first_char');
+            $table->string('second_char');
+            $table->string('third_char');
+            $table->string('fourth_char');
+            $table->string('fivth_char');
 
             $table->foreignIdFor(Category::class)
                 ->nullable()
