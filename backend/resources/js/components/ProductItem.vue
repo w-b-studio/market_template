@@ -104,7 +104,6 @@ export default {
           border-bottom: 1px solid #E6E4E4
           padding-bottom: 1.5vh
         .right_block
-          margin-top: 4vh
           right: 3%
           position: absolute
           button
