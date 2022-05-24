@@ -74,19 +74,20 @@ export default {
 <style lang="sass" scoped>
   .product_main_wrapper
     width: 100%
+    height: 37vh
     border: 1px solid #E6E4E4
-    height: 34vh
     display: flex
     align-items: center
     justify-content: center
     position: relative
-    padding-bottom: 3vh
+    margin-top: 2vh
+    margin-bottom: 2vh
+    background-color: #FFFFFF
     .product_wrapper
       width: 100%
       height: 100%
       display: flex
       flex-direction: row
-      background-color: #FFFFFF
       img
         margin-left: 1.8vw
         margin-top: 2vh
@@ -103,6 +104,7 @@ export default {
           border-bottom: 1px solid #E6E4E4
           padding-bottom: 1.5vh
         .right_block
+          margin-top: 4vh
           right: 3%
           position: absolute
           button

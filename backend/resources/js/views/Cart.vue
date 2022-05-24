@@ -4,29 +4,32 @@
           <router-link to="/">Главная</router-link> > <span>Оформление заказов</span>
         <h2>Оформление заказов</h2>
         </div>
-		<div class="modal_wrapper">
-			<h1><span>Товары в корзине</span></h1>
-			<div class="c_item_wrapper">
-				<div style ="width: 100%; height: 120px; background-color: #FFFFFF; border-bottom: 1px solid #E6E4E4; display: flex; align-items: center;" v-for="(c, index) of cart_items" :key="c.id">
-					<img v-bind:src="c.image.path">
-					<div class="p_block">
-						<span class="p_name">{{c.name}}</span>
-						<ul>
-							<li>{{c.first_char}}</li>
-							<li>{{c.second_char}}</li>
-						</ul>
-						<span class="delete_object" @click="removeObject(index)"> Удалить </span>
+		<div class="total_item_wrapper">
+			<div class="modal_wrapper">
+				<h1><span>Товары в корзине</span></h1>
+				<div class="c_item_wrapper">
+					<div style ="width: 100%; height: 120px; background-color: #FFFFFF; border-bottom: 1px solid #E6E4E4; display: flex; align-items: center;" v-for="(c, index) of cart_items" :key="c.id">
+						<img v-bind:src="c.image.path">
+						<div class="p_block">
+							<span class="p_name">{{c.name}}</span>
+							<ul>
+								<li>{{c.first_char}}</li>
+								<li>{{c.second_char}}</li>
+							</ul>
+							<span class="delete_object" @click="removeObject(index)"> Удалить </span>
+						</div>
+						<span>{{c.price}} ₸</span>
+						
 					</div>
-					<span>{{c.price}} ₸</span>
-					
 				</div>
 			</div>
+			<div class="total">
+				<div class="total_num">Итого {{products_i}} товара на сумму</div>
+				<div class="total_sum">{{products_cost}} ₸</div>
+				<button @click="TakeOrder">Оформить заказ</button>
+			</div>
 		</div>
-		<div class="total">
-			<div class="total_num">Итого {{products_i}} товара на сумму</div>
-			<div class="total_sum">{{products_cost}} ₸</div>
-			<button @click="TakeOrder">Оформить заказ</button>
-		</div>
+		
 		<h2>Покупатель</h2>
 		<form style="height: 12vh">
 			<div class="input_block"><h3>ФИО</h3><input type="text" placeholder="Иванов Иван Иванович" required v-model="buy_name"></div>
@@ -144,35 +147,66 @@ export default {
 			h2
 				margin-top: 1vh
 				padding-bottom: 2vh
-		.modal_wrapper
-			width: 870px
-			margin-right: 310px
-			height: 80%
-			background-color: #FFFFFF
-			position: relative
-			border: 1px solid #E6E4E4
-			.c_item_wrapper
-				img
-					width: 100px
-					margin-left: 2vw
-					height: 100px
-					background-color: gray
-					background-size: 100% 100%
-				.p_block
-					width: 70%
-					.p_name
+		.total_item_wrapper
+			width: 1180px
+			display: flex
+			flex-direction: row
+			justify-content: space-between
+			.total
+				height: 27vh
+				width: 16vw
+				border: 1px solid #E6E4E4
+				background-color: #FFFFFF
+				display: flex
+				flex-direction: column
+				align-items: center
+				.total_num
+					font-size: 1.2em
+					margin-top: 2vh
+				.total_sum
+					margin-top: 1vh
+					font-weight: 700
+					height: 35%
+					width: 80%
+					font-size: 1.2em
+					text-align: center
+					border-bottom: 1px solid #E6E4E4
+				button
+					margin-top: 8%
+					color: white
+					font-weight: 700
+					background-color: #FC8507
+					height: 22%
+					width: 63%
+					border: none
+			.modal_wrapper
+				width: 870px
+				height: 80%
+				background-color: #FFFFFF
+				position: relative
+				border: 1px solid #E6E4E4
+				.c_item_wrapper
+					img
+						width: 100px
 						margin-left: 2vw
-						font-size: 1.2em
-					ul
-						font-size: 0.8em
-						margin-bottom: 0.6vh
-						margin-left: 1vw
-					.delete_object
-						font-weight: 700
-						font-size: 0.8em
-						margin-left: 3vw
-						cursor: pointer
-						color: #4A75CF
+						height: 100px
+						background-color: gray
+						background-size: 100% 100%
+					.p_block
+						width: 70%
+						.p_name
+							margin-left: 2vw
+							font-size: 1.2em
+						ul
+							font-size: 0.8em
+							margin-bottom: 0.6vh
+							margin-left: 1vw
+						.delete_object
+							font-weight: 700
+							font-size: 0.8em
+							margin-left: 3vw
+							cursor: pointer
+							color: #4A75CF
 			h1
 				margin-top: 2vh
 				width: 100%
@@ -189,36 +223,6 @@ export default {
 				font-size: 2em
 			.close:hover
 				cursor: pointer
-		.total
-			height: 27vh
-			width: 16vw
-			position: absolute
-			right: 220px
-			border: 1px solid #E6E4E4
-			background-color: #FFFFFF
-			top: 22vh
-			display: flex
-			flex-direction: column
-			align-items: center
-			.total_num
-				font-size: 1.2em
-				margin-top: 2vh
-			.total_sum
-				margin-top: 1vh
-				font-weight: 700
-				height: 35%
-				width: 80%
-				font-size: 1.2em
-				text-align: center
-				border-bottom: 1px solid #E6E4E4
-			button
-				margin-top: 8%
-				color: white
-				font-weight: 700
-				background-color: #FC8507
-				height: 22%
-				width: 63%
-				border: none
 		h2
 			width: 1180px
 			margin-top: 3vh

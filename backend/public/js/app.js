@@ -2637,6 +2637,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Cart',
@@ -3040,7 +3043,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product_main_wrapper[data-v-398a8687] {\n  width: 100%;\n  border: 1px solid #E6E4E4;\n  height: 34vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  padding-bottom: 3vh;\n}\n.product_main_wrapper .product_wrapper[data-v-398a8687] {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: row;\n  background-color: #FFFFFF;\n}\n.product_main_wrapper .product_wrapper img[data-v-398a8687] {\n  margin-left: 1.8vw;\n  margin-top: 2vh;\n  width: 200px;\n  height: 200px;\n  background-color: gray;\n  background-size: 100% 100%;\n}\n.product_main_wrapper .product_wrapper .right_wrapper[data-v-398a8687] {\n  margin-left: 2vw;\n  width: 47%;\n}\n.product_main_wrapper .product_wrapper .right_wrapper h1[data-v-398a8687] {\n  font-size: 1.3em;\n  margin-top: 2vh;\n  border-bottom: 1px solid #E6E4E4;\n  padding-bottom: 1.5vh;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block[data-v-398a8687] {\n  right: 3%;\n  position: absolute;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block button[data-v-398a8687] {\n  font-size: 1em;\n  color: white;\n  background-color: #FC911F;\n  border: none;\n  padding-top: 0.8vh;\n  padding-bottom: 0.8vh;\n  padding-left: 1vw;\n  padding-right: 1vw;\n  cursor: pointer;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block h2[data-v-398a8687] {\n  font-size: 1.1em;\n  font-weight: 700;\n  margin-top: -7vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block h2 span[data-v-398a8687] {\n  font-weight: 700;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product_main_wrapper[data-v-398a8687] {\n  width: 100%;\n  height: 37vh;\n  border: 1px solid #E6E4E4;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  margin-top: 2vh;\n  margin-bottom: 2vh;\n  background-color: #FFFFFF;\n}\n.product_main_wrapper .product_wrapper[data-v-398a8687] {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: row;\n}\n.product_main_wrapper .product_wrapper img[data-v-398a8687] {\n  margin-left: 1.8vw;\n  margin-top: 2vh;\n  width: 200px;\n  height: 200px;\n  background-color: gray;\n  background-size: 100% 100%;\n}\n.product_main_wrapper .product_wrapper .right_wrapper[data-v-398a8687] {\n  margin-left: 2vw;\n  width: 47%;\n}\n.product_main_wrapper .product_wrapper .right_wrapper h1[data-v-398a8687] {\n  font-size: 1.3em;\n  margin-top: 2vh;\n  border-bottom: 1px solid #E6E4E4;\n  padding-bottom: 1.5vh;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block[data-v-398a8687] {\n  margin-top: 4vh;\n  right: 3%;\n  position: absolute;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block button[data-v-398a8687] {\n  font-size: 1em;\n  color: white;\n  background-color: #FC911F;\n  border: none;\n  padding-top: 0.8vh;\n  padding-bottom: 0.8vh;\n  padding-left: 1vw;\n  padding-right: 1vw;\n  cursor: pointer;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block h2[data-v-398a8687] {\n  font-size: 1.1em;\n  font-weight: 700;\n  margin-top: -7vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.product_main_wrapper .product_wrapper .right_wrapper .right_block h2 span[data-v-398a8687] {\n  font-weight: 700;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3112,7 +3115,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".modal_main_wrapper[data-v-29106a82] {\n  width: 100vw;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.modal_main_wrapper .path[data-v-29106a82] {\n  width: 1180px;\n  margin-top: 2vh;\n}\n.modal_main_wrapper .path a[data-v-29106a82] {\n  padding-right: 1vw;\n  text-decoration: none;\n  color: black;\n}\n.modal_main_wrapper .path a[data-v-29106a82]:hover {\n  text-decoration: underline;\n}\n.modal_main_wrapper .path a[data-v-29106a82]:active {\n  color: black;\n}\n.modal_main_wrapper .path span[data-v-29106a82] {\n  padding-left: 1vw;\n}\n.modal_main_wrapper .path h2[data-v-29106a82] {\n  margin-top: 1vh;\n  padding-bottom: 2vh;\n}\n.modal_main_wrapper .modal_wrapper[data-v-29106a82] {\n  width: 870px;\n  margin-right: 310px;\n  height: 80%;\n  background-color: #FFFFFF;\n  position: relative;\n  border: 1px solid #E6E4E4;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper img[data-v-29106a82] {\n  width: 100px;\n  margin-left: 2vw;\n  height: 100px;\n  background-color: gray;\n  background-size: 100% 100%;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper .p_block[data-v-29106a82] {\n  width: 70%;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper .p_block .p_name[data-v-29106a82] {\n  margin-left: 2vw;\n  font-size: 1.2em;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper .p_block ul[data-v-29106a82] {\n  font-size: 0.8em;\n  margin-bottom: 0.6vh;\n  margin-left: 1vw;\n}\n.modal_main_wrapper .modal_wrapper .c_item_wrapper .p_block .delete_object[data-v-29106a82] {\n  font-weight: 700;\n  font-size: 0.8em;\n  margin-left: 3vw;\n  cursor: pointer;\n  color: #4A75CF;\n}\n.modal_main_wrapper .modal_wrapper h1[data-v-29106a82] {\n  margin-top: 2vh;\n  width: 100%;\n  border-bottom: 1px solid #E6E4E4;\n  font-size: 1.2em;\n}\n.modal_main_wrapper .modal_wrapper h1 span[data-v-29106a82] {\n  margin-left: 1vw;\n}\n.modal_main_wrapper .modal_wrapper .close[data-v-29106a82] {\n  right: 4%;\n  top: 4%;\n  position: absolute;\n  color: black;\n  font-weight: 800;\n  font-size: 2em;\n}\n.modal_main_wrapper .modal_wrapper .close[data-v-29106a82]:hover {\n  cursor: pointer;\n}\n.modal_main_wrapper .total[data-v-29106a82] {\n  height: 27vh;\n  width: 16vw;\n  position: absolute;\n  right: 220px;\n  border: 1px solid #E6E4E4;\n  background-color: #FFFFFF;\n  top: 22vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.modal_main_wrapper .total .total_num[data-v-29106a82] {\n  font-size: 1.2em;\n  margin-top: 2vh;\n}\n.modal_main_wrapper .total .total_sum[data-v-29106a82] {\n  margin-top: 1vh;\n  font-weight: 700;\n  height: 35%;\n  width: 80%;\n  font-size: 1.2em;\n  text-align: center;\n  border-bottom: 1px solid #E6E4E4;\n}\n.modal_main_wrapper .total button[data-v-29106a82] {\n  margin-top: 8%;\n  color: white;\n  font-weight: 700;\n  background-color: #FC8507;\n  height: 22%;\n  width: 63%;\n  border: none;\n}\n.modal_main_wrapper h2[data-v-29106a82] {\n  width: 1180px;\n  margin-top: 3vh;\n  font-size: 1.2em;\n}\n.modal_main_wrapper form[data-v-29106a82] {\n  width: 870px;\n  background-color: #FFFFFF;\n  margin-left: -16.5vw;\n  border: 1px solid #E6E4E4;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n.modal_main_wrapper form .input_block[data-v-29106a82] {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n.modal_main_wrapper form .input_block h3[data-v-29106a82] {\n  width: 13vw;\n  margin-left: 1vw;\n  margin-top: 1vh;\n  margin-bottom: 1vh;\n  font-size: 1em;\n}\n.modal_main_wrapper form .input_block input[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 4vh;\n  width: 72%;\n  font-size: 2vh;\n}\n.modal_main_wrapper form .input_block select[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 4vh;\n  width: 72%;\n  font-size: 2vh;\n}\n.modal_main_wrapper form .input_block textarea[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 12vh;\n  width: 72%;\n  font-size: 2vh;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".modal_main_wrapper[data-v-29106a82] {\n  width: 100vw;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.modal_main_wrapper .path[data-v-29106a82] {\n  width: 1180px;\n  margin-top: 2vh;\n}\n.modal_main_wrapper .path a[data-v-29106a82] {\n  padding-right: 1vw;\n  text-decoration: none;\n  color: black;\n}\n.modal_main_wrapper .path a[data-v-29106a82]:hover {\n  text-decoration: underline;\n}\n.modal_main_wrapper .path a[data-v-29106a82]:active {\n  color: black;\n}\n.modal_main_wrapper .path span[data-v-29106a82] {\n  padding-left: 1vw;\n}\n.modal_main_wrapper .path h2[data-v-29106a82] {\n  margin-top: 1vh;\n  padding-bottom: 2vh;\n}\n.modal_main_wrapper .total_item_wrapper[data-v-29106a82] {\n  width: 1180px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n.modal_main_wrapper .total_item_wrapper .total[data-v-29106a82] {\n  height: 27vh;\n  width: 16vw;\n  border: 1px solid #E6E4E4;\n  background-color: #FFFFFF;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.modal_main_wrapper .total_item_wrapper .total .total_num[data-v-29106a82] {\n  font-size: 1.2em;\n  margin-top: 2vh;\n}\n.modal_main_wrapper .total_item_wrapper .total .total_sum[data-v-29106a82] {\n  margin-top: 1vh;\n  font-weight: 700;\n  height: 35%;\n  width: 80%;\n  font-size: 1.2em;\n  text-align: center;\n  border-bottom: 1px solid #E6E4E4;\n}\n.modal_main_wrapper .total_item_wrapper .total button[data-v-29106a82] {\n  margin-top: 8%;\n  color: white;\n  font-weight: 700;\n  background-color: #FC8507;\n  height: 22%;\n  width: 63%;\n  border: none;\n}\n.modal_main_wrapper .total_item_wrapper .modal_wrapper[data-v-29106a82] {\n  width: 870px;\n  height: 80%;\n  background-color: #FFFFFF;\n  position: relative;\n  border: 1px solid #E6E4E4;\n}\n.modal_main_wrapper .total_item_wrapper .modal_wrapper .c_item_wrapper img[data-v-29106a82] {\n  width: 100px;\n  margin-left: 2vw;\n  height: 100px;\n  background-color: gray;\n  background-size: 100% 100%;\n}\n.modal_main_wrapper .total_item_wrapper .modal_wrapper .c_item_wrapper .p_block[data-v-29106a82] {\n  width: 70%;\n}\n.modal_main_wrapper .total_item_wrapper .modal_wrapper .c_item_wrapper .p_block .p_name[data-v-29106a82] {\n  margin-left: 2vw;\n  font-size: 1.2em;\n}\n.modal_main_wrapper .total_item_wrapper .modal_wrapper .c_item_wrapper .p_block ul[data-v-29106a82] {\n  font-size: 0.8em;\n  margin-bottom: 0.6vh;\n  margin-left: 1vw;\n}\n.modal_main_wrapper .total_item_wrapper .modal_wrapper .c_item_wrapper .p_block .delete_object[data-v-29106a82] {\n  font-weight: 700;\n  font-size: 0.8em;\n  margin-left: 3vw;\n  cursor: pointer;\n  color: #4A75CF;\n}\n.modal_main_wrapper .total_item_wrapper h1[data-v-29106a82] {\n  margin-top: 2vh;\n  width: 100%;\n  border-bottom: 1px solid #E6E4E4;\n  font-size: 1.2em;\n}\n.modal_main_wrapper .total_item_wrapper h1 span[data-v-29106a82] {\n  margin-left: 1vw;\n}\n.modal_main_wrapper .total_item_wrapper .close[data-v-29106a82] {\n  right: 4%;\n  top: 4%;\n  position: absolute;\n  color: black;\n  font-weight: 800;\n  font-size: 2em;\n}\n.modal_main_wrapper .total_item_wrapper .close[data-v-29106a82]:hover {\n  cursor: pointer;\n}\n.modal_main_wrapper h2[data-v-29106a82] {\n  width: 1180px;\n  margin-top: 3vh;\n  font-size: 1.2em;\n}\n.modal_main_wrapper form[data-v-29106a82] {\n  width: 870px;\n  background-color: #FFFFFF;\n  margin-left: -16.5vw;\n  border: 1px solid #E6E4E4;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n.modal_main_wrapper form .input_block[data-v-29106a82] {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n.modal_main_wrapper form .input_block h3[data-v-29106a82] {\n  width: 13vw;\n  margin-left: 1vw;\n  margin-top: 1vh;\n  margin-bottom: 1vh;\n  font-size: 1em;\n}\n.modal_main_wrapper form .input_block input[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 4vh;\n  width: 72%;\n  font-size: 2vh;\n}\n.modal_main_wrapper form .input_block select[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 4vh;\n  width: 72%;\n  font-size: 2vh;\n}\n.modal_main_wrapper form .input_block textarea[data-v-29106a82] {\n  border: 1px solid #E6E4E4;\n  height: 12vh;\n  width: 72%;\n  font-size: 2vh;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5636,71 +5639,75 @@ var render = function () {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "modal_wrapper" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "c_item_wrapper" },
-        _vm._l(_vm.cart_items, function (c, index) {
-          return _c(
-            "div",
-            {
-              key: c.id,
-              staticStyle: {
-                width: "100%",
-                height: "120px",
-                "background-color": "#FFFFFF",
-                "border-bottom": "1px solid #E6E4E4",
-                display: "flex",
-                "align-items": "center",
+    _c("div", { staticClass: "total_item_wrapper" }, [
+      _c("div", { staticClass: "modal_wrapper" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "c_item_wrapper" },
+          _vm._l(_vm.cart_items, function (c, index) {
+            return _c(
+              "div",
+              {
+                key: c.id,
+                staticStyle: {
+                  width: "100%",
+                  height: "120px",
+                  "background-color": "#FFFFFF",
+                  "border-bottom": "1px solid #E6E4E4",
+                  display: "flex",
+                  "align-items": "center",
+                },
               },
-            },
-            [
-              _c("img", { attrs: { src: c.image.path } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "p_block" }, [
-                _c("span", { staticClass: "p_name" }, [_vm._v(_vm._s(c.name))]),
+              [
+                _c("img", { attrs: { src: c.image.path } }),
                 _vm._v(" "),
-                _c("ul", [
-                  _c("li", [_vm._v(_vm._s(c.first_char))]),
+                _c("div", { staticClass: "p_block" }, [
+                  _c("span", { staticClass: "p_name" }, [
+                    _vm._v(_vm._s(c.name)),
+                  ]),
                   _vm._v(" "),
-                  _c("li", [_vm._v(_vm._s(c.second_char))]),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass: "delete_object",
-                    on: {
-                      click: function ($event) {
-                        return _vm.removeObject(index)
+                  _c("ul", [
+                    _c("li", [_vm._v(_vm._s(c.first_char))]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v(_vm._s(c.second_char))]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "delete_object",
+                      on: {
+                        click: function ($event) {
+                          return _vm.removeObject(index)
+                        },
                       },
                     },
-                  },
-                  [_vm._v(" Удалить ")]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(c.price) + " ₸")]),
-            ]
-          )
-        }),
-        0
-      ),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "total" }, [
-      _c("div", { staticClass: "total_num" }, [
-        _vm._v("Итого " + _vm._s(_vm.products_i) + " товара на сумму"),
+                    [_vm._v(" Удалить ")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(c.price) + " ₸")]),
+              ]
+            )
+          }),
+          0
+        ),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "total_sum" }, [
-        _vm._v(_vm._s(_vm.products_cost) + " ₸"),
-      ]),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.TakeOrder } }, [
-        _vm._v("Оформить заказ"),
+      _c("div", { staticClass: "total" }, [
+        _c("div", { staticClass: "total_num" }, [
+          _vm._v("Итого " + _vm._s(_vm.products_i) + " товара на сумму"),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "total_sum" }, [
+          _vm._v(_vm._s(_vm.products_cost) + " ₸"),
+        ]),
+        _vm._v(" "),
+        _c("button", { on: { click: _vm.TakeOrder } }, [
+          _vm._v("Оформить заказ"),
+        ]),
       ]),
     ]),
     _vm._v(" "),
