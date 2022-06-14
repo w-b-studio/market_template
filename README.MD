@@ -1,10 +1,11 @@
 Market
 ===============
-It's my project work by php laravel.
+### It's my project work by php laravel.
 
-I was done this project for taking elements of him and to test some functions.
+### I was done this project for taking elements of him and to test some functions.
 
-# Functionality
+Functionality
+===============
 ## In this project I was used two frameworks.
 ---
 ### It is Vue.js and Laravel(php) frameworks and I was added vue project inside my Laravel app.
