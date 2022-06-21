@@ -91,13 +91,15 @@ export default {
 			products: this.products_request
           }) .then(function (response) {
           console.log(response);
+        	window.location.reload(true);
         }).catch(
           function (error) {
             localStorage.removeItem("cart");
+        	window.location.reload(true);
           }
         )
-		debugger;
         localStorage.removeItem("cart");
+        window.location.reload(true);
         }else{
           alert("У вас нету товаров");
         }
