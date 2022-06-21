@@ -13,14 +13,14 @@ class ProductTest extends TestCase
      *
      * @return void
      */
-    public function get_product_test()
+    public function test_get_product()
     {
         $response = $this->get('/api/product');
 
         $response->assertStatus(200);
     }
 
-    public function create_product_test()
+    public function test_create_product()
     {
         $response = $this->post('/api/product',[
             "name" => "test",
@@ -36,7 +36,7 @@ class ProductTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function delete_product_test()
+    public function test_delete_product()
     {
         $response = $this->delete('/api/product/1');
         

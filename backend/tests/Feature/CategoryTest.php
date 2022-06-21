@@ -13,21 +13,21 @@ class CategoryTest extends TestCase
      *
      * @return void
      */
-    public function get_category_test()
+    public function test_get_category()
     {
         $response = $this->get('/api/category');
 
         $response->assertStatus(200);
     }
 
-    public function get_category_by_id_test()
+    public function test_get_category_by_id()
     {
         $response = $this->get('/api/category/1');
 
         $response->assertStatus(200);
     }
 
-    public function create_category_test()
+    public function test_create_category()
     {
         $response = $this->post('/api/category',[
             "name"=> "test"
@@ -36,7 +36,7 @@ class CategoryTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function delete_category_test()
+    public function test_delete_category()
     {
         $response = $this->delete('/api/category/1');
         

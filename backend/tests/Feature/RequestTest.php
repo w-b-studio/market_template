@@ -13,7 +13,7 @@ class RequestTest extends TestCase
      *
      * @return void
      */
-    public function get_product_test()
+    public function test_get_product()
     {
         $response = $this->get('/api/request');
 
