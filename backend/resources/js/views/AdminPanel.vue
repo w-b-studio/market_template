@@ -1,54 +1,75 @@
 <template>
   <div class="admin_wrapper">
-    <form v-show="!this.is_auth">
-      <legend>Login</legend>
+    <form class="login" v-show="!this.is_auth">
+      <legend class="text-center">Login</legend>
       <input type="text" v-model="username" placeholder="Username">
       <input type="password" v-model="password" placeholder="Password">
       <button @click="Login">Login</button>
     </form>
-    <div class="template" v-show="this.is_auth">
-        <form class="create_category">
-          <legend>Создать Категорию</legend>
-          <input type="text" placeholder="Название" v-model="category_name">
-          <button @click="CreateCategory">Создать</button>
-        </form>
-        <button @click="Modal">Посмотреть заявки</button>
-        <form class="create_product">
-          <legend>Создать Продукт</legend>
-          <input type="text" placeholder="Название" v-model="product_name">
-          <input type="text" placeholder="Ценна" v-model="product_price">
-          <input type="text" placeholder="Характеристика 1" v-model="first_char">
-          <input type="text" placeholder="Характеристика 2" v-model="second_char">
-          <input type="text" placeholder="Характеристика 3" v-model="third_char">
-          <input type="text" placeholder="Характеристика 4" v-model="fourth_char">
-          <input type="text" placeholder="Характеристика 5" v-model="fivth_char">
-          <input type="text" placeholder="Название категории" v-model="product_category">
-          <button @click="CreateProduct">Создать</button>
-        </form>
-        <form>
-          <legend>Добавить картинку</legend>
-          <input type="text" placeholder="Id продукта" v-model="product_id">
-          <input type="file" name="image" id="file_input" @change="CreateImage">
-          Сначала id потом файл
-        </form>
-        <form class="delete_product">
-         <legend>Удалить продукт</legend> 
-          <input type="text" placeholder="Id продукта" v-model="delete_product">
-          <button @click="DeleteProduct">Удалить</button>
-         <legend>Удалить Категорию</legend> 
-          <input type="text" placeholder="Id категории" v-model="delete_category">
-          <button @click="DeleteCategory">Удалить</button>
-        </form>
-        <div id="admin_modal">
-          <a @click="Modalback">back</a>
-          <div class="requests">
-            <div class="request_item"
-              v-for="item in requests" 
-              :key="item.id">
-              <span>Телефон: {{item.number}}</span> <div class="req_product"> <span v-for="product in item.requestproduct" :key="product.id">{{product.product.name}} Ценна: {{product.product.price}}</span></div> <span>Дата отправки: {{item.created_at}}</span>
-            </div>
+    <div class="d-flex flex-column align-items-center w-100" v-show="this.is_auth">
+      <div class="wrapper">
+        <div class="d-flex flex-column admin-item">
+          <h2 class="text-left margins">Заявки</h2>
+          <div
+            v-for="item in requests" 
+            :key="item.id"
+            class="margins bot-line">
+              <span>Имя: {{item.buy_name}}</span><br>
+              <span>Телефон: {{item.number}}</span><br>
+              <span>Адрес: {{item.city}}, {{item.area}}, {{item.address}}</span><br>
+              <div class="req_product"> 
+                <span v-for="product in item.requestproduct" :key="product.id">
+                    {{product.product.name}} Ценна: {{product.product.price}}
+                </span>
+              </div> 
+                <span>
+                    Дата отправки: {{item.created_at}}
+                </span>
           </div>
         </div>
+        <div class="d-flex flex-column admin-item mt-3">
+          <h2 class="text-left margins">Категории</h2>
+          <form class="d-flex flex-row margins">
+            <input type="text" placeholder="Название" v-model="category_name">
+            <button class="button-margin" @click="CreateCategory">Создать</button>
+          </form>
+          <div
+            v-for="item in categories" 
+            :key="item.id"
+            class="margins">
+              <span class="item-text">{{item.id}}. {{item.name}}</span>
+              <button class="button-margin" @click="DeleteCategory(item.id)">Удалить</button>
+          </div>
+        </div>
+        <div class="d-flex flex-column admin-item mt-3">
+          <h2 class="text-left margins">Продукты</h2>
+          <form class="margins">
+            <input class="input-margin" type="text" placeholder="Название" v-model="product_name" required>
+            <input class="input-margin" type="text" placeholder="Цена" v-model="product_price" required>
+            <input class="input-margin" type="text" placeholder="Характеристика 1" v-model="first_char" required>
+            <input class="input-margin" type="text" placeholder="Характеристика 2" v-model="second_char" required>
+            <input class="input-margin" type="text" placeholder="Характеристика 3" v-model="third_char" required>
+            <input class="input-margin" type="text" placeholder="Характеристика 4" v-model="fourth_char" required>
+            <input class="input-margin" type="text" placeholder="Характеристика 5" v-model="fivth_char" required>
+            <select class="input-margin" type="text" placeholder="Название категории" v-model="product_category" required>
+              <option v-for="option in categories"
+              :key="option.id"
+              :value="option.name">
+                {{ option.name }}
+              </option>
+            </select>
+            <button @click="CreateProduct">Создать</button>
+          </form>
+          <div
+            v-for="item in products" 
+            :key="item.id"
+            class="margins">
+              <span class="item-text">{{item.id}}. {{item.name}} {{item.price}}тг.</span>
+              <input class="button-margin" type="file" name="image" id="file_input" @change="CreateImage($event, item.id)">
+              <button class="button-margin" @click="DeleteProduct(item.id)">Удалить</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,10 +84,11 @@ export default {
       third_char: null,
       fourth_char: null,
       fivth_char: null,
-      delete_category: null,
       delete_product: null,
       product_id: null,
       requests: [],
+      categories: [],
+      products: [],
       product_name: null,
       product_price: 0,
       product_category: null,
@@ -83,6 +105,7 @@ export default {
     Login(){
       if(this.username === this.admin_username && this.password === this.admin_password){
         this.is_auth = true;
+        window.localStorage.setItem('is_admin',true)
       }else{
         alert('Не правильный логин или пароль');
       }
@@ -91,7 +114,7 @@ export default {
       axios.post('/api/category', {
           name: this.category_name
           }) .then(function (response) {
-          console.log(response);
+          window.location.reload()
         })
         debugger;
     },
@@ -106,25 +129,31 @@ export default {
           fivth_char: this.fivth_char,
           category: this.product_category
           }) .then(function (response) {
-          console.log(response);
+          window.location.reload()
         })
     },
-    CreateImage(event){
+    CreateImage(event,id){
       debugger;
       let bodyFormData = new FormData()
       bodyFormData.append('image', event.target.files[0])
       axios({
           method: 'post', 
-          url:  '/api/create_image/'+ this.product_id, 
+          url:  '/api/create_image/'+ id, 
           data: bodyFormData,
           headers: { "Content-Type": "multipart/form-data" },
-      })
+      }).then(function (response) {
+          alert('good');
+        })
     },
-    DeleteProduct(){
-      axios.delete('/api/product/'+this.delete_product);
+    DeleteProduct(id){
+      axios.delete('/api/product/'+id).then(function (response) {
+          window.location.reload()
+        });
     },
-    DeleteCategory(){
-      axios.delete('/api/category/'+this.delete_category);
+    DeleteCategory(id){
+      axios.delete('/api/category/'+id).then(function (response) {
+          window.location.reload()
+        });
     },
     Modal(){
       document.getElementById("admin_modal").style.visibility = "visible";
@@ -135,14 +164,44 @@ export default {
     axios
       .get('/api/request')
       .then(response => (this.requests = response.data));
+    axios
+      .get('/api/category')
+      .then(response => (this.categories = response.data));
+    axios
+      .get('/api/product')
+      .then(response => (this.products = response.data));
+    this.is_auth = window.localStorage.getItem('is_admin');
   },
 }
 </script>
 
 <style lang="sass" scoped>
+  .button-margin
+    margin-left: 1.5vw
+  .input-margin
+    margin-top: 2vh
+    margin-left: 1vw 
+  .wrapper
+    margin-top: 5vh
+    margin-left: 10vw
+    margin-bottom: 5vh
+  .bot-line
+    border-bottom: 1px solid gray
+    width: 80%
+  .margins
+    margin-left: 2vw
+    margin-top: 2vh
+  .admin-item
+    border: 1px solid gray
+    border-radius: 20px
+    width: 60%
+  .item-text
+    font-size: 4vh
+    margin-top: 2vh
+    border-bottom: 1px solid gray
   .admin_wrapper
     width: 100vw
-    height: 100vh
+    height: 100%
     display: flex
     align-items: center
     justify-content: center
@@ -156,10 +215,10 @@ export default {
       legend
         font-size: 1.2em
         padding-bottom: 2vh
-    form
+    .login
       width: 23%
       height: 40%
-      background-color: black
+      background-color: gray
       color: white
       display: flex
       justify-content: center

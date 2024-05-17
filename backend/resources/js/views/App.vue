@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header />
+    <Header v-show="this.$route.path != '/admin'"/>
     <router-view />
-    <Footer />
+    <Footer v-show="this.$route.path != '/admin'"/>
   </div>
 </template>
 
